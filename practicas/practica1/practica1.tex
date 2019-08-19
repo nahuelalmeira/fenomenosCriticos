@@ -70,4 +70,42 @@ Una relaci\'on que resulta \'util es
 \pi &= \dfrac{4(t+1)}{\frac{3}{2}\omega + 1} - \dfrac{3}{(\omega+1)^2} - 1
 \end{align}
 
+(c) Para hacer la aproximaci\'on, defino la funci\'on
+
+\begin{equation}
+f(\pi, \omega, t) = \dfrac{4(1+t)}{1+\frac{3}{2}\omega} - \dfrac{3}{(1+\omega)^2} - \pi - 1
+\end{equation}
+
+y realizo una expansi\'on de Taylor en torno a $(\pi, \omega, t) = (0, 0, 0)$.
+
+\begin{align}
+\dfrac{\partial f}{\partial \pi} &= -1 \\
+\dfrac{\partial f}{\partial \omega} &= -\dfrac{6(1+t)}{1+\frac{3}{2}\omega}+ \dfrac{6}{(1+\omega)^3} \\
+\dfrac{\partial f}{\partial t} &= \dfrac{4}{1+\frac{3}{2}\omega} \\
+\dfrac{\partial^2 f}{\partial t \partial\omega} &= -\dfrac{6}{(1+\frac{3}{2}\omega)^2} \\
+\dfrac{\partial^2 f}{\partial \omega^2} &= 18\left[\dfrac{(1+t)}{(1+\frac{3}{2}\omega)^3} - \dfrac{1}{(1+\omega)^4}\right]\\
+\dfrac{\partial^3 f}{\partial \omega^3} &= 18\left[-\dfrac{9}{2}\dfrac{(1+t)}{(1+\frac{3}{2}\omega)^4} + \dfrac{4}{(1+\omega)^5}\right]
+\end{align}
+
+Teniendo en cuenta que las derivadas de orden superior con respecto a $\pi$ se anulan, la expresi\'on queda
+
+\begin{align}
+f(\pi, \omega, t) &= f(0, 0, 0) \nonumber\\ 
+&+ \dfrac{\partial f}{\partial \pi} \Bigr|_{0} \pi + \dfrac{\partial f}{\partial \omega}\Bigr|_{0} \omega + \dfrac{\partial f}{\partial t}\Bigr|_{0} t \nonumber\\
+&+ \dfrac{1}{2} \dfrac{\partial^2 f}{\partial \omega^2}\Bigr|_{0} \omega^2 + \dfrac{\partial^2 f}{\partial t\omega}\Bigr|_{0} t\omega + \dfrac{1}{6} \dfrac{\partial^3 f}{\partial \omega^3}\Bigr|_{0} \omega^3 \nonumber \\
+&+\mathcal{O}(t\omega^2, \omega^4).
+\end{align}
+
+Evaluadndo las derivadas, se obtiene
+
+\begin{equation}
+f(\pi, \omega, t) = -\pi + 4t -6t\omega +\dfrac{3}{2}\omega^3 + \mathcal{O}(t\omega^2, \omega^4)
+\end{equation}
+
+Luego,
+
+\begin{equation}
+\pi = 4t -6t\omega +\dfrac{3}{2}\omega^3  + \mathcal{O}(t\omega^2, \omega^4)
+\end{equation}
+
 \end{document}
