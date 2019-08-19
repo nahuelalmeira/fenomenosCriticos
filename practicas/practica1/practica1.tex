@@ -1,7 +1,73 @@
 \documentclass[10pt]{article}
+\usepackage{amsmath} 
 
 \begin{document}
 
-test
+\textbf{Problema 1: Gas de Van der Waals}
+\\
+
+Ecuaci\'on de estado:
+
+\begin{equation}
+\left(p+\dfrac{a}{v^2}\right)\left( v-b\right)= RT.
+\end{equation}
+
+(a) La transici\'on de fase ocurre cuando 
+
+\begin{align}
+\dfrac{\partial p}{\partial v} &= 0\\
+\dfrac{\partial^2 p}{\partial v^2} &= 0
+\end{align}
+
+Despejando la presi\'on,
+
+\begin{equation} \label{eq:VdW_pVsRest}
+p = \dfrac{RT}{v-b} - \dfrac{a}{v^2}.
+\end{equation}
+
+Derivando una vez e igualando a cero
+
+\begin{equation} \label{eq:VdW_deriv}
+\dfrac{\partial p}{\partial v} = -\dfrac{RT}{(v-b)^2}+ \dfrac{2a}{v^3} = 0\quad \Leftrightarrow \quad RTv^3 = 2a(v-b)^2.
+\end{equation}
+
+Derivando nuevamente
+
+\begin{equation} \label{eq:VdW_deriv2}
+\dfrac{\partial^2 p}{\partial v^2} = \dfrac{2RT}{(v-b)^3} - \dfrac{6a}{v^4} = 0\quad \Leftrightarrow \quad 2RTv^4 = 6a(v-b)^3.
+\end{equation}
+
+Dividiendo \ref{eq:VdW_deriv2} por \ref{eq:VdW_deriv},
+
+\begin{equation}
+2v = 3(v-b)\quad \Leftrightarrow \quad v_c = 3b.
+\end{equation}
+
+Reemplazando $v_c$ en \ref{eq:VdW_deriv2},
+
+\begin{equation}
+T_c = \dfrac{2a (2b)^2}{R(3b)^3} = \dfrac{8}{27}\dfrac{a}{Rb}
+\end{equation}
+
+y reemplazando $T_c$ y $v_c$ en \ref{eq:VdW_pVsRest},
+
+\begin{equation}
+p_c = \dfrac{8}{27} \dfrac{a}{b} \dfrac{1}{2b} - \dfrac{a}{9b^2} = \dfrac{a}{27 b^2}.
+\end{equation}
+
+Una relaci\'on que resulta \'util es 
+
+\begin{equation}
+\dfrac{p_c v_c}{T_c} = \dfrac{3}{8}R.
+\end{equation}
+
+(b) Partiendo de \ref{eq:VdW_pVsRest},
+
+\begin{align}
+(\pi + 1)p_c &= \dfrac{R(t+1)T_c}{(\omega + 1)v_c-b} - \dfrac{a}{(\omega+1)^2v_c^2} \\
+\pi + 1 &= \dfrac{(t+1)(RT_c/p_cv_c)}{(\omega + 1)-b/v_c} - \dfrac{a}{(\omega+1)^2p_cv_c^2} \\
+\pi + 1 &= \dfrac{8(t+1)}{3(\omega + 1)-1} - \dfrac{3}{(\omega+1)^2}\\
+\pi &= \dfrac{4(t+1)}{\frac{3}{2}\omega + 1} - \dfrac{3}{(\omega+1)^2} - 1
+\end{align}
 
 \end{document}
