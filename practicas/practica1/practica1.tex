@@ -96,7 +96,7 @@ f(\pi, \omega, t) &= f(0, 0, 0) \nonumber\\
 &+\mathcal{O}(t\omega^2, \omega^4).
 \end{align}
 
-Evaluadndo las derivadas, se obtiene
+Evaluando las derivadas, se obtiene
 
 \begin{equation}
 f(\pi, \omega, t) = -\pi + 4t -6t\omega +\dfrac{3}{2}\omega^3 + \mathcal{O}(t\omega^2, \omega^4)
@@ -104,8 +104,59 @@ f(\pi, \omega, t) = -\pi + 4t -6t\omega +\dfrac{3}{2}\omega^3 + \mathcal{O}(t\om
 
 Luego,
 
-\begin{equation}
+\begin{equation}\label{eq:pi_approx}
 \pi = 4t -6t\omega +\dfrac{3}{2}\omega^3  + \mathcal{O}(t\omega^2, \omega^4)
 \end{equation}
+
+d) La construcci\'on de Maxwell implica la igualdad
+
+\begin{equation}
+\int_{v_l}^{v_g} p dv = p_0 (v_g - v_l),
+\end{equation}
+
+donde $p_0 = p(v_g) = p(v_l)$.
+
+Utilizando las variables reducidas, se tiene que 
+
+\begin{align}
+\int_{v_l}^{v_g} p dv &= p_0 (v_g - v_l) \\
+\int_{\omega_1}^{\omega_2} (1+\pi) p_c v_c d\omega &= (1+\pi_0) p_c (\omega_2 - \omega_1) v_c \\
+\int_{\omega_1}^{\omega_2} \pi d\omega &= \pi_0 (\omega_2 - \omega_1),
+\end{align}
+
+donde $\pi_0 = \pi_0(\omega_2) = \pi_0(\omega_1)$
+
+Utilizando la expresi\'on aproximada dada por la ecuaci\'on \ref{eq:pi_approx} e integrando,
+
+\begin{align}
+4t(\omega_2 - \omega_1) - 3t(\omega_2^2 - \omega_1^2) + \dfrac{3}{8} (\omega_2^4- \omega_1^4) &= \pi_0 (\omega_2 - \omega_1) \nonumber \\
+4t - 3t(\omega_2 + \omega_1) + \dfrac{3}{8} (\omega_2 + \omega_1) (\omega_2^2 + \omega_2 \omega_1 + \omega_1^2) &= \pi_0. \label{eq:maxwell_integrated}
+\end{align}
+
+Por otro lado,
+
+\begin{align}
+\pi_0(\omega_2) &= \pi_0(\omega_1) \nonumber \\
+ -6t\omega_2 + \dfrac{3}{2}\omega_2^3 &= -6t\omega_1 + \dfrac{3}{2}\omega_1^3 \nonumber \\
+ \omega_2^3-\omega_1^3 &= 4t(\omega_2 - \omega_1) \nonumber \\
+  \omega_2^2+\omega_2  \omega_1 + \omega_1^2 &= 4t. \label{eq:4t_equal_omegas}
+\end{align}
+
+Reemplazando \ref{eq:4t_equal_omegas} en \ref{eq:maxwell_integrated},
+
+\begin{align}
+4t - 3t(\omega_2 + \omega_1) + \dfrac{3}{2} t (\omega_2 + \omega_1) &= \pi_0 \nonumber \\
+4t - \dfrac{3}{2} t (\omega_2 + \omega_1) &= \pi_0
+\end{align}
+
+Evaluando $\pi_0$ en $\omega_2$, se tiene
+
+\begin{align}
+- \dfrac{3}{2} t (\omega_2 + \omega_1) &= -6t\omega_2 +\dfrac{3}{2}\omega_2^3 \nonumber \\
+- t (\omega_2 + \omega_1) &= -4t\omega_2 + \omega_2^3 \nonumber \\
+3 t \omega_2 - \omega_2^3  &= t \omega_1 \label{eq:t_omega1}
+\end{align}
+
+De \ref{eq:t_omega1}
 
 \end{document}
