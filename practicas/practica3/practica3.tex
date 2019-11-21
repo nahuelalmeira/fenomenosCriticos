@@ -1,0 +1,112 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath} 
+
+\begin{document}
+
+\textbf{Problema 1: Modelo de Blume-Capel - Aproximaci\'on variacional}
+\\
+
+\begin{equation}
+H = -J \sum_{\langle i,j\rangle} s_i s_j + D \sum_i s_i^2
+\end{equation}
+
+\begin{equation}
+H_0 = -\eta \sum_i s_i + D \sum_i s_i^2
+\end{equation}
+
+Desigualdad de Bogoliuvob-Peierls:
+
+\begin{equation}
+f \leq f_{\rho} = f_0 + \dfrac{1}{N} \langle H - H_0 \rangle_0.
+\end{equation}
+
+Funci\'on de partici\'on para el hamiltoniano de prueba:
+
+\begin{align}
+\mathcal{Z}_0 &= \sum_{\lbrace s_i\rbrace} e^{-\beta H_0} \nonumber \\
+&= \sum_{\lbrace s_i\rbrace} \exp \left[ \beta \eta \sum_i s_i - \beta D \sum_i s_i^2 \right] \nonumber \\
+&= \sum_{\lbrace s_i\rbrace} \prod_i  \exp \left[ \beta \eta s_i - \beta D  s_i^2 \right] \nonumber \\
+&= \prod_i \sum_{s_i=0,\pm1} \exp \left[ \beta \eta s_i - \beta D  s_i^2 \right] \nonumber \\
+&= \left[1 + e^{-\beta \eta -\beta D} + e^{\beta \eta -\beta D} \right]^N \nonumber \\
+&= \left[1 + 2e^{-\beta D} \cosh\left(\beta \eta\right) \right]^N, \nonumber \\
+&= \mathcal{Z}_{01}^N,
+\end{align}
+
+donde 
+
+\begin{equation}
+\mathcal{Z}_{01} = 1 + 2e^{-\beta D} \cosh\left(\beta \eta\right).
+\end{equation}
+
+Energ\'ia libre:
+
+\begin{align}
+f_0 &= -\dfrac{1}{\beta N} \ln \mathcal{Z}_0 \nonumber \\
+&= -\dfrac{1}{\beta} \ln \left[ 1 + 2e^{-\beta D} \cosh\left(\beta \eta\right) \right]
+\end{align}
+
+Magnetizaci\'on:
+
+\begin{align} \label{eq:BC_m0}
+m_0 &= \langle s_i \rangle_0 \nonumber \\
+&= \dfrac{1}{\mathcal{Z}_{01}} \sum_{s_i=0,\pm1} s_i e^{\beta \eta s_i - \beta D  s_i^2} \nonumber \\
+&= \dfrac{1}{\mathcal{Z}_{01}} \left[-e^{-\beta \eta -\beta D} + e^{\beta \eta -\beta D} \right] \nonumber \\
+&= \dfrac{2e^{-\beta \eta}\sinh\left( \beta \eta \right)}{1+2e^{-\beta \eta}\cosh\left( \beta \eta \right)}
+\end{align}
+
+Segundo momento:
+
+\begin{align}
+\langle s_i^2 \rangle_0 &= \dfrac{1}{\mathcal{Z}_{01}} \sum_{s_i=0,\pm1} s_i^2 e^{\beta \eta s_i - \beta D  s_i^2} \nonumber \\
+&= \dfrac{1}{\mathcal{Z}_{01}} \left[e^{-\beta \eta -\beta D} + e^{\beta \eta -\beta D} \right] \nonumber \\
+&= \dfrac{2e^{-\beta \eta}\cosh\left( \beta \eta \right)}{1+2e^{-\beta \eta}\cosh\left( \beta \eta \right)}
+\end{align}
+
+Valores medios de los hamiltonianos respecto del hamiltoniano de prueba:
+
+\begin{align}
+\langle H_0 \rangle_0 &= -\eta \sum_i \langle_0 s_i \rangle + D \sum_i \langle s_i^2 \rangle_0 \nonumber \\
+&= -\eta N m_0 + D N \langle s_i^2 \rangle_0 \nonumber
+\end{align}
+
+\begin{align}
+\langle H \rangle_0 &= -J \sum_{\langle i,j\rangle} \langle s_i s_j \rangle_0 + D \sum_i \langle s_i^2 \rangle_0 \nonumber \\
+&= -J \sum_{\langle i,j\rangle} \langle s_i \rangle_0 \langle s_j \rangle_0 + D \sum_i \langle s_i^2 \rangle_0 \nonumber \\
+&= -J \dfrac{Nz}{2} m_0^2 + D N \langle s_i^2 \rangle_0 \nonumber
+\end{align}
+
+Proponemos la funci\'on variacional 
+
+\begin{align} \label{eq:BC_Phi}
+\Phi(\eta) &= f_0 + \dfrac{1}{N} \langle H - H_0 \rangle_0 \nonumber \\
+&= -\dfrac{1}{\beta} \ln \left[ 1 + 2e^{-\beta D} \cosh\left(\beta \eta\right) \right] - J \dfrac{z}{2} m_0^2 + \eta m_0
+\end{align}
+
+Derivamos con respecto a $\eta$ e igualamos a cero para hallar el m\'inimo
+
+\begin{align}
+\dfrac{\partial \Phi}{\partial \eta} &= -  \dfrac{2e^{-\beta \eta}\sinh\left( \beta \eta \right)}{1+2e^{-\beta \eta}\cosh\left( \beta \eta \right)} - Jzm_0 \dfrac{\partial m_0}{\partial \eta} + m_0 + \eta \dfrac{\partial m_0}{\partial \eta} \nonumber \\
+&= \left(\eta - Jzm_0\right) \dfrac{\partial m_0}{\partial \eta},
+\end{align}
+
+donde usamos la igualdad \ref{eq:BC_m0}.
+
+La expresi\'on anterior implica que la soluci\'on al problema variacional es 
+
+\begin{equation}
+\eta = Jzm_0.
+\end{equation}
+
+Reemplazando en \ref{eq:BC_Phi}, tenemos
+
+\begin{equation}
+\Phi(\eta) = -\dfrac{1}{\beta} \ln \left[ 1 + 2e^{-\beta D} \cosh\left(\beta \eta\right) \right]  + \dfrac{1}{2Jz} \eta^2
+\end{equation}
+
+Realizamos un desarrollo de Taylor de orden 4 de la expresi\'on anterior, teniendo en cuenta la siguiente relaci\'on:
+
+\begin{equation}
+\ln \left[ 1+ c \cosh(x) \right] = \ln(c+1) + \dfrac{c}{2c+1} x^2 + \dfrac{c(1-2c)}{24(c+1)^2} x^4
+\end{equation}
+
+\end{document}

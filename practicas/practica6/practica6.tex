@@ -1,0 +1,124 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath} 
+
+\begin{document}
+
+\textbf{Problema 1: Decimaci\'on}
+\\
+
+Modelo de Ising unidimencional:
+
+\begin{equation}
+\mathcal{H} = K \sum_i s_i s_{i+1} + h \sum_i s_i,
+\end{equation}
+
+donde $\mathcal{H} \equiv -\beta H$, $K\equiv \beta J$ y $h \equiv \beta B$.
+
+Tomamos bloques de Kadanoff de dos sitios, de los cuales decimamos uno de los sitios. Llamamos $S_i$ a las variables de bloque, y $\sigma_i$ a las variables correspondientes a los sitios decimados. El hamiltoniano entonces puede ser escrito como
+
+\begin{equation}
+\mathcal{H} = K \sum_i \sigma_i (S_i + S_{i+1}) + \dfrac{h}{2} \sum_i (S_i + S_{i+1}) + h \sum_i \sigma_i.
+\end{equation}
+
+Suponemos que, al renormalizar, no hay proliferaci\'on de interacciones, por lo que podemos proponer un hamiltoniano renormalizado de la forma
+
+\begin{equation}
+\mathcal{H}' = K' \sum_i S_i S_{i+1} + \dfrac{h'}{2} \sum_i (S_i + S_{i+1}).
+\end{equation}
+
+Recordemos que, para el caso de decimaci\'on, la transformaci\'on de normalizaci\'on est\'a dada por 
+
+\begin{equation}
+e^{\mathcal{C} + \mathcal{H}'(S)} = \sum_{\lbrace \sigma\rbrace} e^{\mathcal{H}(S,\sigma)},
+\end{equation}
+
+donde $\mathcal{C} = Ng(K,h)$ es la constante de normalizaci\'on y $g(K,h)$ es una funci\'on intensiva de los par\'ametros.
+
+En este caso,
+
+\begin{equation}
+e^{\mathcal{C} + \mathcal{H}'(s')} = \prod_i \exp\left[  K' S_i S_{i+1} + \dfrac{h'}{2} (S_i + S_{i+1}) + g \right]
+\end{equation}
+
+y
+
+\begin{align}
+\sum_{\lbrace \sigma \rbrace} e^{\mathcal{H}(s,\sigma)} &= \prod_i \sum_{\sigma=\pm 1} \exp\left[  K \sigma_i (S_i + S_{i+1}) + \dfrac{h}{2} (S_i + S_{i+1}) + h \sigma_i \right] \nonumber \\
+&=  \prod_i 2 e^{\frac{h}{2} (S_i + S_{i+1}) }  \cosh\left[ K (S_i + S_{i+1}) + h \right] \nonumber
+\end{align}
+
+Igualando las dos expresiones anteriores, tenemos
+
+\begin{equation}
+ \exp\left[  K' S_i S_{i+1} + \dfrac{h'}{2} (S_i + S_{i+1}) + g \right] = e^{\frac{h}{2} (S_i + S_{i+1}) }  \cosh\left[ K (S_i + S_{i+1}) + h \right],
+\end{equation}
+
+para cada bloque $i$.
+
+Evaluando para cada combinaci\'on de spines, tenemos las relaciones
+
+\begin{align}
+e^{g+K'+h'} &= 2e^{h}\cosh(2K+h) \\
+e^{g+K'-h'} &= 2e^{-h}\cosh(2K-h) \\
+e^{g-K'} &= 2\cosh(h) 
+\end{align}
+
+En el caso $h=0$, tenemos que $h'=0$. Resolviendo para $K'$,
+
+\begin{align}
+K'(K) &= \dfrac{1}{2} \ln \left[ \cosh(2K) \right] \label{eq:Ising1D_Kprime}\\
+g(K) &= \ln(2) + K'(K)
+\end{align}
+
+La expresi\'on \ref{eq:Ising1D_Kprime} se puede simplificar mediante el cambio de variables
+
+\begin{align}
+t  &= \tanh(K)\\
+t' &= \tanh(K'),
+\end{align}
+
+y teniendo en cuenta la identidad 
+
+\begin{equation}
+z = \tanh\left[\dfrac{1}{2}\ln\left( \dfrac{z+1}{z-1} \right)\right].
+\end{equation}
+
+De \ref{eq:Ising1D_Kprime}, tenemos que
+
+\begin{align}
+ t' = \tanh(K') = \tanh \left[ \dfrac{1}{2} \ln \left[ \cosh(2K) \right]  \right],
+\end{align}
+
+por lo que se deduce que 
+
+\begin{align}
+ \dfrac{t'+1}{t'-1}  &= \cosh(2K) \nonumber \\
+ &= \dfrac{\dfrac{t+1}{t-1} + \dfrac{t-1}{t+1}}{2} \nonumber \\
+ &= \dfrac{t^2+1}{(t^2-1)}.
+\end{align}
+
+Simplificando la expresi\'on anterior, obtenemos la relaci\'on de recurrencia
+
+\begin{equation} \label{eq:Ising1D_tprime}
+t' = t^2.
+\end{equation}
+
+La relaci\'on \ref{eq:Ising1D_tprime} indica que hay dos puntos fijos: $t^*=0$, que es estable y $t^*=1$, que es inestable. Estos corresponden a $K=0$ (temperatura infinita) y $K=\infty$ (temperatura cero). Es decir que el modelo precice una transici\'on de fase a temperatura id\'enticamente cero.
+
+El exponente cr\'itico $\nu$, asociado a la divergencia de la longitud de correlaci\'on, puede calcularse mediante $\nu = y_T^{-1}$, donde 
+
+\begin{equation}
+y_T = \dfrac{\ln\left(\frac{\partial K'}{\partial K}\Bigr|_{K_c}\right)}{\ln (b)}.
+\end{equation}
+
+En este caso,
+
+\begin{equation}
+\frac{\partial K'}{\partial K}\Bigr|_{K_c} = \tanh(2K_c) = 1,
+\end{equation}
+
+por lo que $\nu = \infty$
+
+Analizamos ahora el caso $h>0$
+
+\end{document}
