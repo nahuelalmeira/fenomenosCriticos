@@ -58,9 +58,9 @@ para cada bloque $i$.
 Evaluando para cada combinaci\'on de spines, tenemos las relaciones
 
 \begin{align}
-e^{g+K'+h'} &= 2e^{h}\cosh(2K+h) \\
-e^{g+K'-h'} &= 2e^{-h}\cosh(2K-h) \\
-e^{g-K'} &= 2\cosh(h) 
+e^{g+K'+h'} &= 2e^{h}\cosh(2K+h) \label{eq:Ising1D_Rec1}\\
+e^{g+K'-h'} &= 2e^{-h}\cosh(2K-h) \label{eq:Ising1D_Rec2} \\
+e^{g-K'} &= 2\cosh(h)  \label{eq:Ising1D_Rec3}
 \end{align}
 
 En el caso $h=0$, tenemos que $h'=0$. Resolviendo para $K'$,
@@ -119,6 +119,41 @@ En este caso,
 
 por lo que $\nu = \infty$
 
-Analizamos ahora el caso $h>0$.
+Analizamos ahora el caso $h>0$. Definimos las variables $u=e^{-4K}$ y $v=e^{-2h}$. Dividiendo  \ref{eq:Ising1D_Rec2} por  \ref{eq:Ising1D_Rec1}, obtenemos la ecuaci\'on para $v'$
+
+\begin{align}
+e^{-2h'} &= e^{-2h} \dfrac{\cosh(2K-h)}{\cosh(2K+h)} \nonumber \\
+v' &= v \dfrac{e^{2K-h} + e^{-2K+h}}{e^{2K+h} + e^{-2K-h}} \nonumber \\
+v' &= v \dfrac{v+u}{1+uv}.
+\end{align}
+
+Elevando \ref{eq:Ising1D_Rec3} al cuadrado,
+
+\begin{align}\label{eq:Ising1D_Rec4}
+e^{2g-2K'} &= (e^h + e^{-h})^2 = \dfrac{(1+v)^2}{v} 
+\end{align}
+
+Multiplicando \ref{eq:Ising1D_Rec2} por  \ref{eq:Ising1D_Rec1},
+
+\begin{align}
+e^{2g+2K'} &= (e^{2K+h} + e^{-2K-h}) (e^{2K-h} + e^{-2K+h}) \nonumber \\
+&= \dfrac{(1+uv)(v+u)}{uv}. \label{eq:Ising1D_Rec5}
+\end{align}
+
+Por \'ultimo, dividiendo \ref{eq:Ising1D_Rec4} por \ref{eq:Ising1D_Rec5}, obtenemos la ecuaci\'on para $u'$. Juntas, ambas son
+
+\begin{align}
+u' &= \dfrac{u (1+v)^2}{(1+uv)(v+u)} \\
+v' &= v \dfrac{v+u}{1+uv}.
+\end{align}
+
+Por inspecci\'on, podemos ver que los puntos $(0,0)$ y $(1,1)$ son puntos fijos. Estos corresponden a las fases ordenada $(T = 0)$ y desordenada $(T = \infty)$, respectivamente. Adem\'as, si $v^*=1$, que corresponder\'ia a campo nulo, tenemos
+
+\begin{align}
+u^* &= \dfrac{4u^*}{(1+u^*)^2},
+\end{align}
+
+cuyas soluciones son $u^* = 0$ y $u^* = 1$. Por lo tanto $(0,1)$ es tambi\'en un punto fijo. Por otro lado, si $u^* = 1$, cualquier valor de $v$ entre 0 y 1 es soluci\'on, por lo que $(1,v)$ es una l\'inea c\'itica.
+
 
 \end{document}
