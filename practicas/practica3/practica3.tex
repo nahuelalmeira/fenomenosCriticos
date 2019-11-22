@@ -109,4 +109,93 @@ Realizamos un desarrollo de Taylor de orden 4 de la expresi\'on anterior, tenien
 \ln \left[ 1+ c \cosh(x) \right] = \ln(c+1) + \dfrac{c}{2c+1} x^2 + \dfrac{c(1-2c)}{24(c+1)^2} x^4
 \end{equation}
 
+\textbf{Problema 3: Teor\'ia de Landau para puntos tricr\'iticos}
+\\
+
+Consideremos un potencial de Landau gen\'erico para un sistema con simetr\'ia de paridad
+
+\begin{equation}
+\mathcal{L} = \dfrac{1}{2} a_2(T,x) \eta^2 + \dfrac{1}{2} a_4(T,x) \eta^4 + \dfrac{1}{6} a_6(T,x) \eta^6 - B \eta,
+\end{equation}
+
+donde $T$ es la temperatura, $B$ el campo magn\'etico, y $x$ el resto de los par\'ametros del sistema. Por simplicidad, consideramos $x$ unidimensional. Suponemos que $a_6(T,x) >0$, $\forall T,x$, lo cual justifica haber truncado el potencial a ese orden.
+
+El punto tricr\'itico est\'a dado por la condici\'on $a_2 = a_4 = 0$. En un entorno de este punto, podemos escribir
+
+\begin{align}
+a_2(t,\omega) &= at + b\omega \\
+a_4(t,\omega) &= ct + d\omega,
+\end{align}
+
+donde los coeficientes $a$, $b$, $c$ y $d$ son positivos. Para obtener los exponentes para el punto tricr\'itico, nos aproximamos por la l\'inea $a_4 = 0$. En ese caso,
+
+\begin{equation}
+\omega = -\dfrac{c}{d}t,
+\end{equation}
+
+por lo que
+
+\begin{equation}
+a_2(t) = \left( a - \dfrac{c}{d}\right) t = A t,\quad A =  \left( a - \dfrac{c}{d}\right).
+\end{equation}
+
+Luego, el potencial de Landau adquiere la forma
+
+\begin{equation}
+\mathcal{L} = \dfrac{1}{2} A t \eta^2 + \dfrac{1}{6} a_6 \eta^6 - B \eta,
+\end{equation}
+
+donde suponemos $a_6$ constante en el entorno del PTC. La ecuaci\'on de estado correspondiente es 
+
+\begin{equation}\label{eq:Landau_state}
+At\eta + a_6\eta^5 = B.
+\end{equation}
+
+Para $B=0$, tenemos
+
+\[ \eta = \begin{cases} 
+      0 & \text{si } t>	 0 \\
+      \left(\dfrac{A}{a_6}\right)^{1/4} (-t)^{1/4} &\text{si } t< 0,
+   \end{cases}
+\]
+
+de donde $\beta_t = 1/4$.
+
+Derivando \ref{eq:Landau_state} respecto a $B$,
+
+\begin{equation}
+A t \chi + 5 a_6 \eta^4 \chi = 1.
+\end{equation}
+
+Para $t>0$, tenemos $\eta = 0$, por lo que $\chi = A^{-1} t^{-1}$. Por otro lado, para $t<0$,
+
+\begin{equation}
+\chi = \dfrac{1}{At + 5a_6\eta^4} = \dfrac{1}{4A} (-t)^{-1}.
+\end{equation}
+
+Se deduce de aqu\'i que el exponente de la susceptibilidad es el mismo independientemente de la fase de la cual nos acercamos, con valor $\gamma = 1$.
+
+Por otro lado, evaluando \ref{eq:Landau_state} en $t = 0$, tenemos
+
+\begin{equation}
+\eta = \dfrac{1}{a_6} B^{1/5},
+\end{equation}
+
+por lo que $\delta = 5$.
+
+Por \'ultimo, recordemos que la energ\'ia libre $f$ es igual al m\'inimo del potencial $\mathcal{L}$. En la fase desordenada, $f = 0$, mientras que en la fase ordenada, tenemos, a campo nulo,
+
+\begin{align}
+f(t) &= -\dfrac{1}{2} A \left( \dfrac{A}{a_6}\right)^{1/2} t^{3/2} - \dfrac{1}{6} a_6 t^{3/2}\\
+&= -\dfrac{1}{6}a_6\left[3 \left( \dfrac{A}{a_6}\right)^{3/2} + 1\right] t^{3/2}.
+\end{align}
+
+El calor espec\'ifico est\'a dado por
+
+\begin{equation}
+C = -T \dfrac{\partial^2 f}{\partial t^2} = \dfrac{1}{8} a_6\left[3 \left( \dfrac{A}{a_6}\right)^{3/2} + 1\right] (-t)^{-1/2},
+\end{equation}
+
+por lo que $\alpha = 1/2$.
+
 \end{document}
