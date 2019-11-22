@@ -109,6 +109,83 @@ Realizamos un desarrollo de Taylor de orden 4 de la expresi\'on anterior, tenien
 \ln \left[ 1+ c \cosh(x) \right] = \ln(c+1) + \dfrac{c}{2c+1} x^2 + \dfrac{c(1-2c)}{24(c+1)^2} x^4
 \end{equation}
 
+\textbf{Problema 2: Modelo de Blume-Capel - Versi\'on Curie-Weiss}
+\\
+
+
+\begin{equation}
+H = -\dfrac{J}{2N} \sum_{i,j} s_i s_j + D \sum_i s_i^2 - B\sum_i s_i
+\end{equation}
+
+Reescribimos el hamiltoniano como
+
+\begin{equation}
+H = -\dfrac{J}{2N} \left(\sum_i s_i \right)^2 + \dfrac{J}{2} + D \sum_i s_i^2 - B\sum_i s_i.
+\end{equation}
+
+La funci\'on de partici\'on es entonces 
+
+\begin{equation}
+\mathcal{Z} = e^{-K_1/2} \sum_{\lbrace s \rbrace} \exp \left[ \dfrac{K_1}{2N} \left(\sum_i s_i \right)^2 - K_2 \sum_i s_i^2 + h \sum_i s_i \right],
+\end{equation}
+
+donde $K_1 = \beta J$, $K_2 = \beta D$ y $h = \beta B$. Definimos 
+
+\begin{equation}
+a = \sqrt{\dfrac{K_1}{N}} \sum_i s_i
+\end{equation}
+
+y utilizamos la identidad gaussiana
+
+\begin{equation}
+e^{a^2/2} = \dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-x^2/2+ax} dx.
+\end{equation}
+
+Obtenemos
+
+\begin{align}
+\mathcal{Z} &= e^{-K_1/2} \sum_{\lbrace s \rbrace} \dfrac{1}{\sqrt{2\pi}}  \int_{-\infty}^{\infty} e^{-x^2/2} \exp \left[ - K_2 \sum_i s_i^2 + \left(x\sqrt{\dfrac{K_1}{N}} + h\right) \sum_i s_i \right] dx \nonumber \\
+&= e^{-K_1/2} \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-x^2/2} \left[1+  2 e^{-K_2}\cosh\left( x\sqrt{\dfrac{K_1}{N}} + h \right)\right]^N dx \nonumber \\
+&= e^{-K_1/2} \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \exp\left\lbrace -\dfrac{x^2}{2} + N \ln\left[1+  2 e^{-K_2}\cosh\left( x\sqrt{\dfrac{K_1}{N}} + h \right)\right] \right\rbrace dx.
+\end{align}
+
+Realizamos el cambio de variables $\eta = x(K_1 N)^{-1/2}$ y obtenemos
+
+\begin{equation}
+\mathcal{Z} = e^{-K_1/2} \sqrt{\dfrac{KN}{2\pi}} \int_{-\infty}^{\infty} e^{Ng(\eta)} d\eta,
+\end{equation}
+
+donde
+
+\begin{equation}
+g(\eta) = \dfrac{K_1}{2}\eta^2 + \ln \left[1+ 2e^{-K_2}\cosh\left( K_1\eta + h \right) \right].
+\end{equation}
+
+Usando el m\'etodo de Laplace en el l\'imite $N\rightarrow\infty$ resulta
+
+\begin{equation}
+-\beta f = \max_{\eta} g(\eta).
+\end{equation}
+
+Derivando e igualando a cero obtenemos la ecuaci\'on
+
+\begin{equation}
+ \eta_0 = \dfrac{2e^{-K_2}\sinh\left( K_1\eta_0 + h \right)}{1+2e^{-K_2}\cosh\left( K_1\eta_0 + h \right)}.
+\end{equation}
+
+La magnetizaci\'on del sistema resulta
+
+\begin{equation}
+m = -\dfrac{\partial f}{\partial B} = \dfrac{\partial (-\beta f)}{\partial h} = \dfrac{2e^{-K_2}\sinh\left( K_1\eta_0 + h \right)}{1+2e^{-K_2}\cosh\left( K_1\eta_0 + h \right)} = \eta_0,
+\end{equation}
+
+de donde se sigue que la magnetizaci\'on satisface la relaci\'on
+
+\begin{equation}
+m = \dfrac{2e^{-K_2}\sinh\left( K_1 m + h \right)}{1+2e^{-K_2}\cosh\left( K_1 m + h \right)}.
+\end{equation}
+
+
 \textbf{Problema 3: Teor\'ia de Landau para puntos tricr\'iticos}
 \\
 
@@ -123,11 +200,11 @@ donde $T$ es la temperatura, $B$ el campo magn\'etico, y $x$ el resto de los par
 El punto tricr\'itico est\'a dado por la condici\'on $a_2 = a_4 = 0$. En un entorno de este punto, podemos escribir
 
 \begin{align}
-a_2(t,\omega) &= at + b\omega \\
-a_4(t,\omega) &= ct + d\omega,
+a_2(T,x) &= at + b\omega \\
+a_4(T,x) &= ct + d\omega,
 \end{align}
 
-donde los coeficientes $a$, $b$, $c$ y $d$ son positivos. Para obtener los exponentes para el punto tricr\'itico, nos aproximamos por la l\'inea $a_4 = 0$. En ese caso,
+donde los coeficientes $a$, $b$, $c$ y $d$ son positivos y donde $t = (T - T_t)/T_t$ y $\omega = (x-x_t)/x_t$. Para obtener los exponentes para el punto tricr\'itico, nos aproximamos por la l\'inea $a_4 = 0$. En ese caso,
 
 \begin{equation}
 \omega = -\dfrac{c}{d}t,
