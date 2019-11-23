@@ -3,9 +3,121 @@
 
 \begin{document}
 
-\textbf{Problema 1:}
+\textbf{Problema 1: Interacciones de corto alcance}
 \\
 
+Sistema de tipo Ising con condiciones de borde peri\'odicas e interacciones de corto alcance a varios vecinos
 
+\begin{equation}
+\mathcal{H} = - \sum_{i<j\leq N} J(i-j) \sigma_1 \sigma_j -  B \sum_{i=1}^N \sigma_i,
+\end{equation}
+
+$J(n) = 0$, $\forall n>n_0$.
+
+El hamiltioniano puede reescribirse en la forma 
+
+\begin{equation}
+\mathcal{H} = -\sum_{k=1}^{n_0} J_k \sum_{i=1}^N \sigma_i \sigma_{i+k} - B \sum_{i=1}^N \sigma_i.
+\end{equation}
+
+Supongamos que $N = L n_0$. En ese caso, podemos separar nuestra cadena en bloques de spines consecutivos de tama\~no $n_0$ e introducir la siguiente notaci\'on:
+
+\begin{align*}
+\left[ \sigma_1, \sigma_2,\dots ,\sigma_{n_0} \right]
+\quad &\rightarrow\quad
+\left[ s_1^{(1)}, s_2^{(1)},\dots ,s_{n_0}^{(1)} \right]  \\
+\left[ \sigma_{n_0+1},\sigma_{n_0+2},\dots ,\sigma_{2n_0} \right]
+\quad &\rightarrow\quad
+\left[ s_1^{(2)}, s_2^{(2)},\dots ,s_{n_0}^{(2)} \right] \\
+&\dots  \\
+\left[ \sigma_{(L-1)n_0+1}, \sigma_{(L-1)n_0+1},\dots ,\sigma_{L n_0} \right] 
+\quad &\rightarrow\quad
+\left[ s_1^{(L)}, s_2^{(L)},\dots ,s_{n_0}^{(L)} \right]
+\end{align*}
+
+As\'i, la energ\'ia del sistema viene dada por tres tipos de interacciones diferentes:
+
+\begin{itemize}
+\item Interacciones de spines de un bloque con el campo magn\'etico, \\
+\item Interacciones de spines dentro de un bloque, \\
+\item Interacciones de spines entre bloques consecutivos.
+\end{itemize}
+
+Las contribuciones de los primeros dos tipos dentro de un bloque vienen dadas por 
+
+\begin{align*}
+X_{c_j} &\equiv X( s_1^{(j)}, s_2^{(j)},\dots ,s_{n_0}^{(j)}) \\
+&= -B\sum_{i=1}^{n_0} s_i^{(j)} - \sum_{k=1}^{n_0} J_k \sum_{i=1}^{n_0-k} s_i^{(j)} s_{i+k}^{(j)}.
+\end{align*}
+
+Por otro lado, las interacciones entre bloques vienen dadas por 
+
+
+\begin{align*}
+Y_{c_j, c_{j+1}} &\equiv Y( s_1^{(j)}, s_2^{(j)},\dots ,s_{n_0}^{(j)},\dots , s_1^{(j+1)}, s_2^{(j+1)},\dots ,s_{n_0}^{(j+1)}) \\
+&= - \sum_{k=1}^{n_0} J_k \sum_{i=1}^{n_0-k} s_{n+1-i}^{(j)} s_{k-i+1}^{(j+1)}.
+\end{align*}
+
+Luego, el hamiltoniano del sistema puede escribirse como
+
+\begin{equation}
+\mathcal{H} = \sum_{j=1}^{L} \left(X_{c_j} + Y_{c_j, c_{j+1}}\right)
+\end{equation}
+
+La funci\'on de partici\'on del sistema ser\'a entonces 
+
+\begin{align}
+\mathcal{Z} &= \sum_{\lbrace c\rbrace} \exp \left[ -\beta \sum_{j=1}^{L} \left(X_{c_j} + Y_{c_j, c_{j+1}}\right) \right] \nonumber \\
+&=  \sum_{\lbrace c\rbrace} \prod_{j=1}^L \exp \left[ -\beta\left( \dfrac{X_{c_j}}{2} + Y_{c_j, c_{j+1}} + \dfrac{X_{c_{j+1}}}{2}\right) \right]
+\end{align}
+
+Definimos la matriz de transferencia 
+
+\begin{equation}
+T(c,c') = \exp \left[ -\beta \left(\dfrac{X_{c}}{2} + Y_{c, c'} + \dfrac{X_{c'}}{2}\right) \right],
+\end{equation}
+
+entonces
+
+\begin{align}
+\mathcal{Z} &= \sum_{c_1} \sum_{c_2}\dots\sum_{c_L} T(c_1,c_2) T(c_2,c_3)\dots T(c_{L-1},c_L) T(c_L,c_1)\nonumber \\
+&= \text{Tr} (T^L).
+\end{align}
+
+En el l\'imite termodin\'amico, la funci\'on de partici\'on puede aproximarse por 
+
+\begin{equation}
+\mathcal{Z} \sim \lambda_1^L, 
+\end{equation}
+
+donde $\lambda_1$ es el mayor autovalor de $T$. 
+
+
+
+\textbf{Problema 2: Modelo de Ising antiferromagn\'etico unidimensional}
+\\
+
+\begin{equation}
+\mathcal{H} = J\sum_{i=1}^N \sigma_i \sigma_{i+1} - B \sum_{i=1}^N \sigma_i- B_a \sum_{i=1}^N (-1)^N \sigma_i.
+\end{equation}
+
+Simetrizamos el hamiltoniano y separamos las sumas en t\'erminos pares e impares
+
+\begin{align}
+\mathcal{H} &= \sum_{i\,\text{par}} \left[J \sigma_i \sigma_{i+1} - \dfrac{B}{2} \left( \sigma_i + \sigma_{i+1}\right) -\dfrac{B_a}{2} \left( \sigma_i - \sigma_{i+1}\right) \right] + \nonumber \\
+&+ \sum_{i\,\text{impar}} \left[J \sigma_i \sigma_{i+1} - \dfrac{B}{2} \left( \sigma_i + \sigma_{i+1}\right) -\dfrac{B_a}{2} \left( \sigma_{i+1} - \sigma_i\right) \right].
+\end{align}
+
+Definimos la matriz 
+
+\begin{align*}
+A(\sigma,\sigma') = \exp\left[ J \sigma \sigma' - \dfrac{B}{2} \left( \sigma + \sigma'\right) -\dfrac{B_a}{2} \left( \sigma - \sigma'\right) \right].
+\end{align*}
+
+La funci\'on de partici\'on puede escribirse entonces como
+
+\begin{equation}
+\mathcal{Z} = \sum_{\lbrace\sigma\rbrace} A(\sigma_1,\sigma_2) A^T(\sigma_2,\sigma_3)\dots A(\sigma_{N-1},\sigma_N) A^T(\sigma_N,\sigma_1) 
+\end{equation}
 
 \end{document}
