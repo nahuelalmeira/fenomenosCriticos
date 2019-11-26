@@ -92,6 +92,7 @@ En el l\'imite termodin\'amico, la funci\'on de partici\'on puede aproximarse po
 
 donde $\lambda_1$ es el mayor autovalor de $T$. 
 
+\pagebreak
 
 
 \textbf{Problema 2: Modelo de Ising antiferromagn\'etico unidimensional}
@@ -125,15 +126,16 @@ donde $U=AA^T$. Como $U$ es sim\'etrica, podemos aplicar el teorema de Perron-Fr
 
 Calculamos expl\'icitamente $A$ para obtener los autovalores de $U$.
 
-$$A = 
+\begin{equation}
+A = 
 \begin{bmatrix}
 e^{-\beta(J+B)} & e^{\beta(J-B_a)}\\
 e^{\beta(J+B_a)} & e^{\beta(J+B)}
 \end{bmatrix}
-$$
+\end{equation}
 
-
-$$U = 
+\begin{align}
+U &= 
 \begin{bmatrix}
 e^{-\beta(J+B)} & e^{\beta(J-B_a)}\\
 e^{\beta(J+B_a)} & e^{\beta(J+B)}
@@ -142,7 +144,84 @@ e^{\beta(J+B_a)} & e^{\beta(J+B)}
 \begin{bmatrix}
 e^{-\beta(J+B)} & e^{\beta(J+B_a)}\\
 e^{\beta(J-B_a)} & e^{\beta(J+B)}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+e^{-2\beta(J+B)} + e^{2\beta(J-B_a)} & e^{\beta(B_a-B)} + e^{\beta(2J+B-B_a)}\\
+e^{\beta(B_a-B)} + e^{\beta(2J+B-B_a)} & e^{2\beta(J+B)} + e^{2\beta(J+B_a)}
 \end{bmatrix}
-$$
+\end{align}
+
+\pagebreak
+
+\textbf{Problema 3: Modelo de Blume-Capel Unidimensional}
+
+\begin{equation}
+\mathcal{H} = -J \sum_i s_i s_{i+1} + D \sum_i s_i^2.
+\end{equation}
+
+Reescribimos el hamiltoniano de forma simetrizada
+
+\begin{equation}
+\mathcal{H} = \sum_i \left[\dfrac{D}{2} \left(s_i^2+s_{i+1}^2\right) - J s_i s_{i+1}\right].
+\end{equation}
+
+La funci\'on de partici\'on est\'a dada por 
+
+\begin{equation}
+\mathcal{Z} = \sum_{\lbrace s \rbrace} \prod_i e^{Ks_i s_{i+1} - \frac{K_2}{2}(s_i^2 + s_{i+1}^2)},
+\end{equation}
+
+donde definimos $K \equiv \beta J$ y $K_2 \equiv \beta D$. Definimos la matriz de transferencia $A$ como
+
+\begin{equation}
+A_{ss'} = e^{Ks s' - \frac{K_2}{2}(s^2 + s'^2)},
+\end{equation}
+
+por lo que tenemos 
+
+\begin{equation}
+\mathcal{Z} = \text{Tr} (A^N).
+\end{equation}
+
+Como $A$ es real, sim\'etrica y de dimensi\'onb finita, vale Perron-Frobenius, por lo que, en el l\'imite termodin\'amico se puede aproximar
+
+\begin{equation}
+\mathcal{Z} = \lambda_1^N,
+\end{equation}
+
+siendo $\lambda_1$ el mayor autovalor de $A$.
+
+Escribimos la expresi\'on expl\'icita para $A$:
+
+\begin{equation}
+A =
+\begin{bmatrix}
+A_{-1,-1} & A_{-1,0} & A_{-1,1} \\
+A_{0,-1} & A_{0,0} & A_{0,1} \\
+A_{1,-1} & A_{1,0} & A_{1,1} \\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+e^{K-K_2} & e^{-K_2/2} & e^{-K-K_2} \\
+e^{-K_2/2} & 1 & e^{-K_2/2} \\
+e^{-K-K_2} & e^{-K_2/2} & e^{K-K_2} \\
+\end{bmatrix}
+\end{equation}
+
+Los autovalores de la matriz son
+
+%&= \dfrac{1}{2} + e^{-K_2} \cosh(K)\pm\sqrt{\left[ \dfrac{1}{2} + e^{-K_2} \cosh(K)  \right]^2 + 2e^{-K_2}\left[1 - \cosh(K) \right]} \nonumber \\
+
+\begin{align}
+\lambda_s &= 2e^{-K_2}\sinh(K) \\
+\lambda_{\pm} &= \dfrac{1}{2} + e^{-K_2} \cosh(K)\pm\sqrt{\left[ \dfrac{1}{2} - e^{-K_2} \cosh(K)  \right]^2 + 2e^{-K_2}}
+\end{align}
+
+En el l\'imite de altas temperaturas, el autovalor $\lambda_s \rightarrow 0$, por lo que el mayor autovalor es 
+
+\begin{equation}
+\lambda_1 = \lambda_+ = \dfrac{1}{2} + e^{-K_2} \cosh(K) + \sqrt{\left[ \dfrac{1}{2} - e^{-K_2} \cosh(K)  \right]^2 + 2e^{-K_2}}
+\end{equation}
 
 \end{document}
