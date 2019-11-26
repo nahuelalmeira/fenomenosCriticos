@@ -108,16 +108,41 @@ Simetrizamos el hamiltoniano y separamos las sumas en t\'erminos pares e impares
 &+ \sum_{i\,\text{impar}} \left[J \sigma_i \sigma_{i+1} - \dfrac{B}{2} \left( \sigma_i + \sigma_{i+1}\right) -\dfrac{B_a}{2} \left( \sigma_{i+1} - \sigma_i\right) \right].
 \end{align}
 
-Definimos la matriz 
+Definimos la matriz $A$ tal que 
 
 \begin{align*}
-A(\sigma,\sigma') = \exp\left[ J \sigma \sigma' - \dfrac{B}{2} \left( \sigma + \sigma'\right) -\dfrac{B_a}{2} \left( \sigma - \sigma'\right) \right].
+(A)_{\sigma\sigma'} = -\beta\exp\left[ J \sigma \sigma' - \dfrac{B}{2} \left( \sigma + \sigma'\right) -\dfrac{B_a}{2} \left( \sigma - \sigma'\right) \right].
 \end{align*}
 
 La funci\'on de partici\'on puede escribirse entonces como
 
-\begin{equation}
-\mathcal{Z} = \sum_{\lbrace\sigma\rbrace} A(\sigma_1,\sigma_2) A^T(\sigma_2,\sigma_3)\dots A(\sigma_{N-1},\sigma_N) A^T(\sigma_N,\sigma_1) 
-\end{equation}
+\begin{align}
+\mathcal{Z} &= \sum_{\lbrace\sigma\rbrace} (A)_{\sigma_1\sigma_2} (A^T)_{\sigma_2\sigma_3}\dots (A)_{\sigma_{N-1}\sigma_N} (A^T)_{\sigma_N\sigma_1} \nonumber \\
+&= \text{Tr}\left( U^{N/2} \right),
+\end{align}
+
+donde $U=AA^T$. Como $U$ es sim\'etrica, podemos aplicar el teorema de Perron-Frobenius. El sistema, entonces, est\'a caracterizado por el autovalor m\'as grande de $U$, $\lambda_1$.
+
+Calculamos expl\'icitamente $A$ para obtener los autovalores de $U$.
+
+$$A = 
+\begin{bmatrix}
+e^{-\beta(J+B)} & e^{\beta(J-B_a)}\\
+e^{\beta(J+B_a)} & e^{\beta(J+B)}
+\end{bmatrix}
+$$
+
+
+$$U = 
+\begin{bmatrix}
+e^{-\beta(J+B)} & e^{\beta(J-B_a)}\\
+e^{\beta(J+B_a)} & e^{\beta(J+B)}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+e^{-\beta(J+B)} & e^{\beta(J+B_a)}\\
+e^{\beta(J-B_a)} & e^{\beta(J+B)}
+\end{bmatrix}
+$$
 
 \end{document}
