@@ -99,15 +99,49 @@ La expresi\'on anterior implica que la soluci\'on al problema variacional es
 
 Reemplazando en \ref{eq:BC_Phi}, tenemos
 
-\begin{equation}
+\begin{equation}\label{eq:Phi_var}
 \Phi(\eta) = -\dfrac{1}{\beta} \ln \left[ 1 + 2e^{-\beta D} \cosh\left(\beta \eta\right) \right]  + \dfrac{1}{2Jz} \eta^2
 \end{equation}
 
 Realizamos un desarrollo de Taylor de orden 4 de la expresi\'on anterior, teniendo en cuenta la siguiente relaci\'on:
 
-\begin{equation}
-\ln \left[ 1+ c \cosh(x) \right] = \ln(c+1) + \dfrac{c}{2c+1} x^2 + \dfrac{c(1-2c)}{24(c+1)^2} x^4
-\end{equation}
+\begin{align*}
+\ln \left[ 1+ 2 c \cosh(x) \right] &= \ln(2c+1) + \dfrac{c}{2c+1} x^2 + \\
+&+ \dfrac{c(1-4c)}{12(2c+1)^2} x^4 + \dfrac{c(64c^2-26c+1)}{360(2c+1)^3} x^6.
+\end{align*}
+
+Reemplazando en \ref{eq:Phi_var} y definiendo $c = e^{-\beta D}$,
+
+\begin{align*}
+\Phi(\eta)  &= -\dfrac{1}{\beta}\ln(2c+1) +\left( \dfrac{1}{2Jz} - \beta \dfrac{c}{2c+1}\right) \eta^2 + \\
+&+ \beta^4\dfrac{c(1-4c)}{12(2c+1)^2} \eta^4 + \beta^6\dfrac{c(64c^2-26c+1)}{360(2c+1)^3} \eta^6.
+\end{align*}
+
+El punto tricr\'itico se obtiene igualando a cero los coeficientes de $\eta^2$ y $\eta^4$. A partir del t\'ermino cuadr\'atico se obtiene
+
+\begin{align*}
+\dfrac{1}{2Jz} &= \beta \dfrac{c}{2c+1} \\
+2 + c^{-1} &= 2\beta J z \\
+\beta D &= \ln 2 + \ln(\beta J z - 1)
+\end{align*}
+
+mientras que del t\'ermino cu\'artico,
+
+\begin{align*}
+c &= \dfrac{1}{4} \\
+\beta D &= 2 \ln 2
+\end{align*}
+
+Despejando,
+
+\begin{align*}
+D &= \dfrac{2Jz}{3}\ln 2 \\
+\beta &= \dfrac{3}{Jz} 
+\end{align*}
+
+Obs: El t\'ermino de orden 6 no es positivo en todo el espacio de par\'ametros, pero s\'i lo es en el entorno del punto tricr\'itico, por lo que el desarrollo anterior es v\'alido.
+
+\pagebreak
 
 \textbf{Problema 2: Modelo de Blume-Capel - Versi\'on Curie-Weiss}
 \\
@@ -185,6 +219,7 @@ de donde se sigue que la magnetizaci\'on satisface la relaci\'on
 m = \dfrac{2e^{-K_2}\sinh\left( K_1 m + h \right)}{1+2e^{-K_2}\cosh\left( K_1 m + h \right)}.
 \end{equation}
 
+\pagebreak
 
 \textbf{Problema 3: Teor\'ia de Landau para puntos tricr\'iticos}
 \\
@@ -250,7 +285,7 @@ Para $t>0$, tenemos $\eta = 0$, por lo que $\chi = A^{-1} t^{-1}$. Por otro lado
 \chi = \dfrac{1}{At + 5a_6\eta^4} = \dfrac{1}{4A} (-t)^{-1}.
 \end{equation}
 
-Se deduce de aqu\'i que el exponente de la susceptibilidad es el mismo independientemente de la fase de la cual nos acercamos, con valor $\gamma = 1$.
+Se deduce de aqu\'i que el exponente de la susceptibilidad es el mismo independientemente de la fase de la cual nos acercamos, con valor $\gamma_t = 1$.
 
 Por otro lado, evaluando \ref{eq:Landau_state} en $t = 0$, tenemos
 
@@ -258,7 +293,7 @@ Por otro lado, evaluando \ref{eq:Landau_state} en $t = 0$, tenemos
 \eta = \dfrac{1}{a_6} B^{1/5},
 \end{equation}
 
-por lo que $\delta = 5$.
+por lo que $\delta_t = 5$.
 
 Por \'ultimo, recordemos que la energ\'ia libre $f$ es igual al m\'inimo del potencial $\mathcal{L}$. En la fase desordenada, $f = 0$, mientras que en la fase ordenada, tenemos, a campo nulo,
 
@@ -273,6 +308,6 @@ El calor espec\'ifico est\'a dado por
 C = -T \dfrac{\partial^2 f}{\partial t^2} = \dfrac{1}{8} a_6\left[3 \left( \dfrac{A}{a_6}\right)^{3/2} + 1\right] (-t)^{-1/2},
 \end{equation}
 
-por lo que $\alpha = 1/2$.
+por lo que $\alpha_t = 1/2$.
 
 \end{document}
