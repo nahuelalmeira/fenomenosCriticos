@@ -1,0 +1,80 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath} 
+
+\begin{document}
+
+\textbf{Problema 1: Funciones homog\'eneas}
+\\
+
+Sea una funci\'on homog\'enea generalizada
+
+\begin{equation}
+\lambda f(x, y) = f(\lambda^a x, \lambda^b y).
+\end{equation}
+
+Muestre que la transformada de Legendre 
+
+\begin{equation}
+g(x, u(x,y)) = f(x, y) - y u(x, y),
+\end{equation}
+
+donde 
+
+\begin{equation}
+u(x, y) = \left(\dfrac{\partial f}{\partial y} \right)_x,
+\end{equation}
+
+es tambi\'en una funci\'on homog\'enea generalizada.\\
+
+\textbf{Soluci\'on:}
+\\
+
+Observemos primero que la derivada de una funci\'on homog\'enea generalizada es tambi\'en funci\'on homog\'enea generalizada:
+
+\begin{align*}
+\lambda \dfrac{\partial f(x, y)}{\partial y} &= \dfrac{\partial f(\lambda^a x, \lambda^b y)}{y} \\
+\lambda u(x, y) &= \lambda^b \dfrac{\partial f(\lambda^a x, \lambda^b y)}{\partial (\lambda^b y)} \\
+\lambda^{1-b} u(x, y) &= u(\lambda^a x, \lambda^b y)
+\end{align*}
+
+Ahora bien, partiendo de la definici\'on de $g$,
+
+\begin{align*}
+f(\lambda^a x, \lambda^b y) &= g(\lambda^a x, u(\lambda^a x,\lambda^b y)) + \lambda^b y u(\lambda^a x, \lambda^b y) \\
+\lambda f(x, y) &= g(\lambda^a x, \lambda^{1-b} u(x, y)) + \lambda^b y \lambda^{1-b} u(x, y) \\
+\lambda \left( f(x, y) - y u(x, y) \right) &= g(\lambda^a x, \lambda^{1-b} u(x, y) \\
+\lambda^{1-b} g(x, u) &= g(\lambda^a x, \lambda^{1-b} u)
+\end{align*}
+
+\pagebreak
+
+\textbf{Problema 2: Teor\'ias de escala}\\
+
+Usando la construcci\'on de bloques de Kadanoff muestre que la funci\'on de correlaci\'on de pares para un ferromagneto puede expresarse como 
+
+\begin{equation}
+C(r, t, B) = t^{\nu(d-2+\eta)} F\left( \dfrac{r}{t^{-\nu}}, \dfrac{B}{t^{\Delta}} \right),
+\end{equation}
+
+donde $t = T/T_c - 1$ y $\Delta = \beta \delta$.\\
+
+
+\textbf{Soluci\'on:}\\
+
+\begin{equation}
+b^{2(d-y)}C(r, t, B) = C(r/b, t b^x, B b^y)
+\end{equation}
+
+En particular, para $t b^x = 1$ (o bien, $b = t^{-1/x}$), 
+
+\begin{align*}
+t^{-2(d-y)/x} C(r, t, B) = C\left( \dfrac{r}{t^{1/x}}, \dfrac{B}{t^{y/x}} \right).
+\end{align*}
+
+Usando las identidades $\nu = 1/x$, $\Delta = y/x$ y $2(d-y) = d - 2 - \eta$, se deduce que
+
+\begin{equation}
+C(r, t, B) = t^{\nu(d-2+\eta)} F\left( \dfrac{r}{t^{-\nu}}, \dfrac{B}{t^{\Delta}} \right),
+\end{equation}
+
+\end{document}
