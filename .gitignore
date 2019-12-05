@@ -4,6 +4,7 @@
 *.synctex.gz
 *.bbl
 *.blg
+*.dvi
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
