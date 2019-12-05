@@ -310,4 +310,36 @@ C = -T \dfrac{\partial^2 f}{\partial t^2} = \dfrac{1}{8} a_6\left[3 \left( \dfra
 
 por lo que $\alpha_t = 1/2$.
 
+\pagebreak
+
+\textbf{Problema 3: Derivada funcional}\\
+
+Sea $f(\mathbf{r})$ una funci\'on. Podemos interpretar a $f(\mathbf{r_1})$ como una funcional $F[f]$ de la forma
+
+\begin{equation}
+F[f] := \int f(\mathbf{r}) \delta(\mathbf{r} - \mathbf{r_1}) d \mathbf{r} = f(\mathbf{r_1}).
+\end{equation}
+
+Usando la definici\'on de la derivada funcional,
+
+\begin{align*}
+\dfrac{\delta f(\mathbf{r_1})}{\delta f(\mathbf{r_0})} &= \dfrac{\delta F}{\delta f(\mathbf{r_0})} \\
+&= \lim_{\epsilon\rightarrow 0} \dfrac{\int \left[ f(\mathbf{r}) + \epsilon \delta(\mathbf{r} - \mathbf{r_0})\right] \delta(\mathbf{r} - \mathbf{r_1}) d \mathbf{r} - \int f(\mathbf{r}) \delta(\mathbf{r} - \mathbf{r_1}) d \mathbf{r}}{\epsilon} \\
+&= \int \delta(\mathbf{r} - \mathbf{r_0}) \delta(\mathbf{r} - \mathbf{r_1}) d \mathbf{r} \\
+&=  \delta(\mathbf{r_1} - \mathbf{r_0}).
+\end{align*}
+
+\begin{align*}
+\dfrac{\delta}{\delta \eta(\mathbf{r})}\int \frac{1}{2} \left(\nabla \eta(\mathbf{r'})\right)^2 d\mathbf{r'} &= \lim_{\epsilon \rightarrow 0} \dfrac{ \int \frac{1}{2} \left[\nabla \left(\eta(\mathbf{r'}) + \epsilon \delta(\mathbf{r}-\mathbf{r'})\right)\right]^2 d\mathbf{r'} - \int \dfrac{1}{2} \left(\nabla \eta(\mathbf{r'})\right)^2 d\mathbf{r'} }{\epsilon} \\
+&=   \int \nabla \eta(\mathbf{r'})\nabla  \delta(\mathbf{r}-\mathbf{r'}) d\mathbf{r'} \\
+&= - \int \nabla^2 \eta(\mathbf{r'}) \delta(\mathbf{r}-\mathbf{r'}) d\mathbf{r'} \\
+&= -\nabla^2 \eta(\mathbf{r})
+\end{align*}
+
+\begin{align*}
+\dfrac{\delta}{\delta h(\mathbf{r})} \exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right] &= \lim_{\epsilon\rightarrow 0} \dfrac{1}{\epsilon}\bigg\lbrace 
+\exp\left[\int (h(\mathbf{r'}) + \epsilon \delta(\mathbf{r}-\mathbf{r'}) \eta(\mathbf{r'}) d\mathbf{r'}\right] - \\
+&-\exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right] \bigg\rbrace
+\end{align*}
+
 \end{document}
