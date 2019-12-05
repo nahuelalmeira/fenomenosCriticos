@@ -312,7 +312,7 @@ por lo que $\alpha_t = 1/2$.
 
 \pagebreak
 
-\textbf{Problema 3: Derivada funcional}\\
+\textbf{Problema 4: Derivada funcional}\\
 
 Sea $f(\mathbf{r})$ una funci\'on. Podemos interpretar a $f(\mathbf{r_1})$ como una funcional $F[f]$ de la forma
 
@@ -336,10 +336,41 @@ Usando la definici\'on de la derivada funcional,
 &= -\nabla^2 \eta(\mathbf{r})
 \end{align*}
 
+Sea $F[h] = \exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right]$, entonces
+
 \begin{align*}
-\dfrac{\delta}{\delta h(\mathbf{r})} \exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right] &= \lim_{\epsilon\rightarrow 0} \dfrac{1}{\epsilon}\bigg\lbrace 
+\dfrac{\delta}{\delta h(\mathbf{r})} F[h] =& \lim_{\epsilon\rightarrow 0} \dfrac{1}{\epsilon}\bigg\lbrace 
 \exp\left[\int (h(\mathbf{r'}) + \epsilon \delta(\mathbf{r}-\mathbf{r'}) \eta(\mathbf{r'}) d\mathbf{r'}\right] - \\
-&-\exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right] \bigg\rbrace
+&-\exp\left[\int h(\mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\right] \bigg\rbrace \\
+=& F[h] \lim_{\epsilon\rightarrow 0} \dfrac{1}{\epsilon}  \bigg\lbrace \exp\bigg[\epsilon \int \delta(\mathbf{r} - \mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'}\bigg] -1 \bigg\rbrace.
+\end{align*}
+
+Desarrollando en potencias la exponencial dentro del l\'imite,
+
+\begin{align*}
+\dfrac{\delta}{\delta h(\mathbf{r})} F[h] 
+&= F[h] \lim_{\epsilon\rightarrow 0} \dfrac{1}{\epsilon}  \bigg\lbrace 1+ \epsilon \int \delta(\mathbf{r} - \mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'} - 1\bigg\rbrace \\
+&= F[h] \int \delta(\mathbf{r} - \mathbf{r'})\eta(\mathbf{r'}) d\mathbf{r'} \\
+&= \eta(\mathbf{r}) F[h] 
+\end{align*}
+
+\pagebreak
+
+\textbf{Problema 5: Funcional de Landau-Ginzburg}\\
+
+Usando la propiedad del problema anterior, tenemos que 
+
+\begin{equation}
+\langle \eta(\mathbf{r})\rangle \equiv \dfrac{1}{\mathcal{Z}} \int \mathcal{D}\eta\; \eta(\mathbf{r'})  e^{-\beta L[\eta]} = \dfrac{1}{\beta} \dfrac{\delta \ln \mathcal{Z}}{\delta B(\mathbf{r})}.
+\end{equation}
+
+Por otro lado
+
+\begin{align*}
+\chi(\mathrm{r}, \mathrm{r'}) &\equiv \dfrac{\delta \langle \eta(\mathbf{r}) \rangle}{\delta B(\mathbf{r'})} \\
+&= \dfrac{1}{\beta} \dfrac{\delta}{\delta B(\mathbf{r'})}\left[ \dfrac{1}{\mathcal{Z}} \dfrac{\delta \mathcal{Z}}{\delta B(\mathbf{r})} \right] \\
+&= \dfrac{1}{\beta} \left[ \dfrac{1}{\mathcal{Z}} \dfrac{\delta \delta \mathcal{Z}}{\delta B(\mathbf{r}) \delta B(\mathbf{r'})} - \dfrac{1}{\mathcal{Z}^2} \dfrac{\delta \mathcal{Z}}{\delta B(\mathbf{r})} \dfrac{\delta \mathcal{Z}}{\delta B(\mathbf{r'})}  \right] \\
+&= \beta \bigg[ \langle \eta(\mathbf{r})  \eta(\mathbf{r'}) \rangle - \langle  \eta(\mathbf{r}) \rangle \langle  \eta(\mathbf{r'}) \rangle \bigg] 
 \end{align*}
 
 \end{document}
