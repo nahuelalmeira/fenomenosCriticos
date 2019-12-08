@@ -109,6 +109,18 @@ Simplificando la expresi\'on anterior, obtenemos la relaci\'on de recurrencia
 t' = t^2.
 \end{equation}
 
+Otra forma de llegar a la relaci\'on anterior es partiendo de 
+
+\begin{equation}
+e^{2K'} = \cosh(2K)
+\end{equation}
+
+y notando que 
+
+\begin{equation}
+\tanh^2(K) = \dfrac{e^{2K} + e^{-2K} + 2}{e^{2K} + e^{-2K} - 2} = \dfrac{\cosh(2K) + 1}{\cosh(2K) - 1}= \dfrac{e^{2K'} + 1}{e^{2K'} - 1} = \tanh(K') 
+\end{equation}
+
 La relaci\'on \ref{eq:Ising1D_tprime} indica que hay dos puntos fijos: $t^*=0$, que es estable y $t^*=1$, que es inestable. Estos corresponden a $K=0$ (temperatura infinita) y $K=\infty$ (temperatura cero). Es decir que el modelo precice una transici\'on de fase a temperatura id\'enticamente cero.
 
 El exponente cr\'itico $\nu$, asociado a la divergencia de la longitud de correlaci\'on, puede calcularse mediante $\nu = y_T^{-1}$, donde 
@@ -163,7 +175,9 @@ cuyas soluciones son $u^* = 0$ y $u^* = 1$. Por lo tanto $(0,1)$ es tambi\'en un
 
 \pagebreak
 
-\textbf{Problema 2: Aproximaci\'on de Migdal-Kadanoff}
+\textbf{Problema 2: Aproximaci\'on de Migdal-Kadanoff}\\
+
+Antes de utilizar la aproximaci\'on de M-K, necesitamos la ecuaci\'on de transformaci\'on para decimaci\'on de una cadena lineal con $b = 3$.
 
 \begin{align*}
 \exp \left[ K' S_1 S_2 + \dfrac{h}{2}\left( S_1 + S_2\right) +g \right] = \sum_{\lbrace \sigma \rbrace} \exp &\bigg[ K(S_1 \sigma_1 + \sigma_1 \sigma_2 + \sigma_2 S_2) \\
@@ -184,5 +198,162 @@ e^{g+K'+h'} &= 2e^{h}\left[e^{-K} + e^K\cosh(2K+2h) \right] \label{eq:b3_Rec1}\\
 e^{g+K'-h'} &= 2e^{-h}\left[e^{-K} + e^K\cosh(2K-2h) \right]\label{eq:b3_Rec2} \\
 e^{g-K'} &= 2\left[ e^{-K} \cosh(2K) + e^K \cosh(2h) \right] \label{eq:b3_Rec3}
 \end{align}
+ 
+Podemos verificar que que se cumplen las relaciones $K'(K, -h) = K'(K, h)$ y $h'(K, -h) = -h'(K, h)$, por lo que $h=0$ es un subespacio invariante. Dado que el punto fijo es no trivial es \'unico, este se encontrar\'a dentro de este subespacio. Para hallarlo, entonces, basta con igualar $h = 0$ en las ecuaciones anteriores, con lo que obtenemos el sistema
+
+
+\begin{align}
+e^{g+K'} &= 2\left[e^{-K} + e^K \cosh(2K) \right] \label{eq:b3_h0_Rec1} \\
+e^{g-K'} &= 2\left[e^{-K}\cosh(2K) + e^K \right] \label{eq:b3_h0_Rec2}
+\end{align}
+
+Dividiendo  \ref{eq:b3_h0_Rec1} por  \ref{eq:b3_h0_Rec2},
+
+\begin{equation}
+e^{2K'} = \dfrac{2e^{-K} + e^K(e^{2K} + e^{-2K})}{e^{-K}(e^{3K} + e^{-2K}) + 2e^K} = \dfrac{e^{2K} + 3e^{K}}{e^{-3K}+3e^{-K}}.
+\end{equation}
+
+Luego,
+
+\begin{align*}
+\tanh(K') &= \dfrac{e^{2K'}+1}{e^{2K'}-1} \\
+&= \dfrac{\dfrac{e^{3K} + 3e^{K}}{e^{-3K}+3e^{-K}} + 1}{\dfrac{e^{3K} + 3e^{K}}{e^{-3K}+3e^{-K}} - 1} \\
+&= \dfrac{e^{3K} + 3e^{K} + e^{-3K}+3e^{-K}}{e^{3K} + 3e^{K}-e^{-3K}-3e^{-K}} \\
+&= \tanh^3(K)
+\end{align*}
+
+Luego, utilizando el mismo cambio de variables que en el problema anterior, tenemos la ecuaci\'on de transformaci\'on 
+
+\begin{equation}
+t' = t^3.
+\end{equation}
+
+Una vez obtenida la relaci\'on $K'_b(K)$, utilizamos la aproximaci\'on de M-K, cuya expresi\'on para $b = 3$ y $d = 2$ es $K'(K) = 3 K'_3(K)$, es decir,
+
+\begin{equation}
+K' = 3 \tanh^{-1}\left[\tanh^3(K)\right].
+\end{equation}
+
+La ecuaci\'on anterior se puede escribir como 
+
+\begin{equation}
+\tanh\left( \dfrac{K'}{3} \right) = \tanh^3(K).
+\end{equation}
+
+Teniendo en cuenta la relaci\'on 
+
+\begin{equation}
+\tanh(x+y) = \dfrac{\tanh(x) + \tanh(y)}{1 + \tanh(x) \tanh(y)}
+\end{equation}
+
+y definiendo $z = \tanh(x)$,
+
+tenemos
+
+\begin{equation}
+\tanh(2x) = \dfrac{2 z}{1+z^2}
+\end{equation}
+
+y
+
+\begin{align}
+\tanh(3x) &= \dfrac{z + \tanh(2x)}{1 + z \tanh(2x)} \\
+&= \dfrac{z (1 + z^2) + 2z}{1 + z^2 + 2z^2} \\
+&= \dfrac{z^3 + 3 z}{3 z^2 + 1}.
+\end{align}
+
+Luego, teniendo en cuenta que $\tanh(K') = \tanh(3(K'/3))$,
+
+\begin{align}
+t' = \tanh(K') =  \dfrac{t^9 + 3 t^3}{3 t^6 + 1}.
+\end{align}
+
+Calculamos los puntos fijos mediante $t^*=t=t'$ y definimos $u=t^2$,
+
+\begin{align}
+3u^3+1 &= u^4 + 3 u \\
+(u^2-1)(u^2-3u+1) &= 0.
+\end{align}
+
+Como la variable $u$ est\'a definida en el intervalo $0 \leq u \leq 1$, las \'unicas dos soluciones posibles son
+
+\begin{align*}
+u_1 &= 1 \\
+u_2 &= \dfrac{3-\sqrt{5}}{2}
+\end{align*}
+
+\pagebreak
+
+\textbf{Problema 4: Redes jer\'arquicas}\\
+
+La igualdad entre el hamiltoniano de sitios y el hamiltoniano renormalizado est\'a dada por 
+
+\begin{align*}
+\exp \left[ K' S_1 S_2 + \dfrac{h}{2}\left( S_1 + S_2\right) +g \right] = \sum_{\lbrace \sigma \rbrace} \exp &\bigg[ K(S_1 + S_1) (\sigma_1 + \sigma_2) + K \sigma_1 \sigma_2 \\
+&+ h (\sigma_1 + \sigma_2) + \dfrac{h}{2} (S_1 + S_2) \bigg]
+\end{align*}
+
+Realizando la traza sobre el miembro derecho de la ecuaci\'on,
+
+\begin{align*}
+&\sum_{\lbrace \sigma \rbrace} \exp \bigg[ K(S_1 + S_1) (\sigma_1 + \sigma_2) + K \sigma_1 \sigma_2 + h (\sigma_1 + \sigma_2) + \dfrac{h}{2} (S_1 + S_2) \bigg] = \\
+e^{\frac{h}{2} (S_1 + S_2)}  &\sum_{\lbrace \sigma \rbrace} \exp \bigg[ K(S_1 + S_1) (\sigma_1 + \sigma_2) + K \sigma_1 \sigma_2 + h (\sigma_1 + \sigma_2) \bigg] = \\
+e^{\frac{h}{2} (S_1 + S_2)} &\bigg[ e^{-K(S_1+S_2)+K-2h} + e^{K(S_1+S_2)+K+2h} + 2e^{-K} \bigg] = \\
+2 e^{\frac{h}{2} (S_1 + S_2)}  &\bigg[ e^{K} cosh\bigg( K(S_1+S_2) + 2h \bigg) + e^{-K}\bigg]
+\end{align*}
+
+Evaluando para cada combinaci\'on de spines $S_1$ y $S_2$, tenemos el sistema de ecuaciones
+
+\begin{align}
+e^{g+K'+h'} &= 2e^{h}\left[e^{-K} + e^K\cosh(4K+2h) \right] \label{eq:rombo_Rec1}\\
+e^{g+K'-h'} &= 2e^{-h}\left[e^{-K} + e^K\cosh(4K-2h) \right]\label{eq:rombo_Rec2} \\
+e^{g-K'} &= 2\left[ e^{-K} + e^K \cosh(2h) \right]. \label{eq:rombo_Rec3}
+\end{align}
+
+Podemos verificar que que se cumplen las relaciones $K'(K, -h) = K'(K, h)$ y $h'(K, -h) = -h'(K, h)$, por lo que $h=0$ es un subespacio invariante. Dado que el punto fijo es no trivial es \'unico, este se encontrar\'a dentro de este subespacio. Para hallarlo, entonces, basta con igualar $h = 0$ en las ecuaciones anteriores, con lo que obtenemos el sistema
+
+\begin{align}
+e^{g+K'} &= 2\left[e^{-K} + e^K\cosh(4K) \right] \label{eq:rombo_h0_Rec1}\\
+e^{g-K'} &= 4\cosh(K). \label{eq:rombo_h0_Rec2}
+\end{align}
+
+Dividiendo  \ref{eq:rombo_h0_Rec1} por \ref{eq:rombo_h0_Rec2}, tenemos
+
+\begin{equation} \label{eq:rombo_Rk}
+e^{2K'} = \dfrac{e^{-K} + e^K\cosh(4K)}{2\cosh(K)}.
+\end{equation}
+
+Para calcular los puntos fijos, hacemos $K'=K=K^*$ y definimos $u=e^{2K^*}$. La ecuaci\'on anterior queda entonces 
+
+\begin{align}
+u &= \dfrac{1 + u\dfrac{u^2 + u^{-2}}{2}}{(u+1)} \\
+2 u (u+1) &= 2 + u^3 + u^{-1} \\
+u^4 - 2 u^3 - 2u^2 + 2u + 1 &= 0 \\
+(u-1)(u+1)(u-1-\sqrt{2})(u-1+\sqrt{2}) = 0.
+\end{align}
+
+Las \'unicas ra\'ices positivas son $u_1 = 1$ t $u_2 = 1+\sqrt{2}$. La primera corresponde a $K^* = 0$, es decir, $T=\infty$, por lo que corresponde al estado paramagn\'etico. La segunda corresponde a 
+
+\begin{equation}
+K^* = \dfrac{\ln(1+\sqrt{2})}{2},
+\end{equation}
+
+que coincide con la temperatura cr\'itica para el modelo de Ising en $d=2$ con red cuadrada.
+
+El exponente cr\'itico $\nu$ viene dado por 
+
+\begin{equation}
+\nu^{-1} = y_T = \dfrac{\ln\bigg(\dfrac{dK'}{dK}\bigg\rvert_{K^*} \bigg)}{\ln b}.
+\end{equation}
+
+Derivando \ref{eq:rombo_Rk} respecto a $K$,
+
+\begin{align}
+e^{2K'} \dfrac{dK'}{dK} &= e^{4K} - \cosh(2K) \\
+\dfrac{dK'}{dK}\bigg\rvert_{K^*} &= u - \dfrac{1+u^{-2}}{2}\\
+\dfrac{dK'}{dK}\bigg\rvert_{K^*} &= 2\sqrt{2}-1.
+\end{align}
+
+Con esto se obtiene $\nu \simeq 1.1486$.
  
 \end{document}
