@@ -264,7 +264,7 @@ y
 
 Luego, teniendo en cuenta que $\tanh(K') = \tanh(3(K'/3))$,
 
-\begin{align}
+\begin{align} \label{eq:MK_tprime_t}
 t' = \tanh(K') =  \dfrac{t^9 + 3 t^3}{3 t^6 + 1}.
 \end{align}
 
@@ -281,6 +281,24 @@ Como la variable $u$ est\'a definida en el intervalo $0 \leq u \leq 1$, las \'un
 u_1 &= 1 \\
 u_2 &= \dfrac{3-\sqrt{5}}{2}
 \end{align*}
+
+Para evaluar la estabilidad, derivamos \ref{eq:MK_tprime_t} con respecto a $t$,
+
+\begin{equation}
+\dfrac{dt'}{dt} = \dfrac{9t^2 (t^6-1)^2}{(3t^6+1)^2}
+\end{equation}
+
+Para el equilibrio $t_1 = \sqrt{u_1}$ la derivada se anula, por lo que el punto fijo es estable (correspondiente a temperatura infinita). Para el equilibrio $t_2 = \sqrt{u_2}$, tenemos
+
+\begin{equation}
+\dfrac{dt'}{dt}\bigg\rvert_{t_2} = \dfrac{9}{4} > 1,
+\end{equation}
+
+por lo que el punto fijo es inestable y, por lo tanto, representa el punto cr\'itico. Resolviendo para $K^* = \tanh^{-1}(t^*)$, tenemos
+
+\begin{equation}
+K^* = \tanh^{-1}\left[\sqrt{\dfrac{3-\sqrt5}{2}} \right] \simeq 0.7218
+\end{equation}
 
 \pagebreak
 
@@ -355,5 +373,74 @@ e^{2K'} \dfrac{dK'}{dK} &= e^{4K} - \cosh(2K) \\
 \end{align}
 
 Con esto se obtiene $\nu \simeq 1.1486$.
+
+\pagebreak
+
+\textbf{Problema 5: M\'etodo de Niemeijer y von Leeuwen}\\
+
+\begin{align}
+\mathcal{Z}_0^I &= e^{4K} + 4 e^{2K} + 6 + 4 e^{-2K} + e^{-4K} \nonumber \\
+&= 16 \cosh^4(K)
+\end{align}
+
+\begin{align}
+\langle s_c^I \rangle(S^I) &= \dfrac{1}{\mathcal{Z}_0} \sum_{\lbrace s \rbrace} P(S, s) e^{\mathcal{H}_0}(s) s_c^I \nonumber \\
+\langle s_c^I \rangle(1)&= \dfrac{e^{4K} + 4 e^{2K} + 6 - 4 e^{-2K} - e^{-4K}}{\mathcal{Z}_0^I} \nonumber \\
+&= \dfrac{\sinh(4K) + 4\sinh(2K) + 3}{8 \cosh^4(K)}
+\end{align}
+
+Luego, 
+
+\begin{equation}
+\langle s_c^I \rangle = a(K)\; S^I,\quad a(K) =  \dfrac{\sinh(4K) + 4\sinh(2K) + 3}{8 \cosh^4(K)}.
+\end{equation}
+
+\begin{align}
+\langle s_p^I \rangle(S^I) &= \dfrac{1}{\mathcal{Z}_0} \sum_{\lbrace s \rbrace} P(S, s) e^{\mathcal{H}_0}(s) s_p^I \nonumber \\
+\langle s_p^I \rangle(1)&= \dfrac{e^{4K} + 2 e^{2K} + 2 e^{-2K} + e^{-4K}}{\mathcal{Z}_0^I} \nonumber \\
+&= \dfrac{\cosh(4K) + 2\sinh(2K)}{8 \cosh^4(K)}
+\end{align}
  
+Luego, 
+
+\begin{equation}
+\langle s_p^I \rangle = r(K)\; S^I,\quad r(K) =  \dfrac{\cosh(4K) + 2\sinh(2K)}{8 \cosh^4(K)}.
+\end{equation}
+
+\begin{align}
+\langle \mathcal{V}(s)\rangle_0 &= 2K\sum_{\langle I,J\rangle} \langle s_p^I \rangle_0 \langle s_p^J \rangle_0 + h \sum_I \left[4 \langle s_p^I \rangle_0 + \langle s_c^I \rangle_0 \right] \nonumber \\
+&= 2K r^2(K) \sum_{\langle I,J\rangle} S^I S^J +   \left[4 r(K) + a(K) \right] h \sum_I S^I 
+\end{align}
+
+Las ecuaciones de renormalizaci\'on son entonces
+
+\begin{align}
+K' &= 2Kr^2(K) \\
+h' &= \left[ 4r(K)+a(K) \right] h
+\end{align}
+
+Calculamos $K^*$ en el subespacio invariante $h=0$:
+
+\begin{align}
+r(K^*) &= \dfrac{1}{2} \\
+\cosh(4K) + 2 \cosh(2K) &= 4\cosh^4(K) \\
+\cosh(4K) + 2\cosh(2K) &= 4 \left(\dfrac{1+\cosh(2K)}{2} \right)^2 \\
+\cosh(4K) + 2\cosh(2K) &= 1 + 2\cosh(2K) + \cosh^2(2K) \\
+\cosh(4K) &= 1 + \dfrac{1+\cosh(4K)}{2} \\
+\cosh(4K) &= 3 \\
+e^{4K} + e^{-4K} = 6.
+\end{align}
+
+Definimos $u \equiv e^{4K}$, entonces
+
+\begin{equation}
+u^2 - 6u + 1 = 0.
+\end{equation}
+
+La \'unica soluci\'on f\'isica (con $u>1$) es $u^* = 3+2\sqrt{2}$. Luego, 
+
+\begin{equation}
+K^* = \dfrac{\log{(3+2\sqrt{2})}}{4} \simeq 0.4407.
+\end{equation}
+
 \end{document}
