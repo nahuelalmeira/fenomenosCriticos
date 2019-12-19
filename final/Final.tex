@@ -4,8 +4,7 @@
 
 \begin{document}
 
-\textbf{Problema 1: Campo medio}
-\\
+\section*{Problema 1: Campo medio}
 
 \begin{equation}
 H = -J_2 \sum_{\langle i,j\rangle} \sigma_i \sigma_j - J_4 \sum_I \sigma_{I1}\sigma_{I2}\sigma_{I3}\sigma_{I4}
@@ -160,6 +159,128 @@ De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\bet
 \includegraphics[scale=0.5]{phase_diagram.png}
 \caption{Diagrama de fases.}
 \end{figure}
+
+
+\section*{Problema 2: Grupo de renormalizaci\'on}
+
+La regla de la mayor\'ia puede expresarse como
+
+\begin{equation}
+P(s', s) = \prod_I P_I(s',s),
+\end{equation}
+
+donde 
+
+\begin{equation}
+P_I(s', s) = \dfrac{1}{2} \left[ 1 + S'_I\; \mathrm{sgn}(S_1^I+S_2^I+S_3^I+S_4^I) \right].
+\end{equation}
+
+Podemos ver que, en el caso de empate, la expresi\'on anterior asigna la misma probabilidad a cada uno de los dos posibles valores del spin de bloque.
+
+La funci\'on de partici\'on interna puede expresarse como
+
+\begin{align}
+\mathcal{Z}_0^I &= 1\times e^{4K} + 1\times 4 + \dfrac{1}{2}\times 4 + \dfrac{1}{2}\times 2e^{-4K} \nonumber \\
+&= e^{4K} + 6 + e^{-4K} \nonumber \\
+&= 2 \cosh(4K) + 6
+\end{align}
+
+Como todos los spines del bloque son equivalentes, el promedio de spin de sitio es 
+
+\begin{align}
+\langle S_i^I \rangle_0 &= \dfrac{1}{\mathcal{Z}_0} \sum_{\lbrace s \rbrace} P(S, s) e^{\mathcal{H}_0}(s) S_i^I \nonumber \\
+ &= \dfrac{e^{4K} + 2}{\mathcal{Z}_0^I} S'_I\nonumber \\
+&= a(K) S'_I,
+\end{align}
+
+donde
+
+\begin{equation}
+a(K) =   \dfrac{e^{4K} + 2}{2 \cosh(4K) + 6}.
+\end{equation}
+
+\begin{align}
+\langle \mathcal{V}(s)\rangle_0 &= K\sum_{\langle I,J\rangle} \langle V_{IJ} \rangle_0 + 4 h \sum_I \langle S_i^I \rangle_0,
+\end{align}
+
+donde 
+
+\begin{equation}
+V_{IJ} = \sum_{\langle I,J\rangle; i\epsilon I,j\epsilon J} S_i S_j.
+\end{equation}
+
+En el caso de bloques cuadrados de 4 sitios,
+
+\begin{equation}
+V_{IJ} = S_1^I S_4^J+  S_2^I S_3^J.
+\end{equation}
+
+Luego,
+
+\begin{equation}
+\langle V_{IJ}\rangle_0 = 2\langle S_i^I \rangle_0 \langle S_i^J \rangle_0.
+\end{equation}
+
+Entonces,
+
+
+\begin{align}
+\langle \mathcal{V}(s)\rangle_0 &= 2K\sum_{\langle I,J\rangle} \langle S_i^I \rangle_0 \langle S_i^J \rangle_0 + 4 h \sum_I  \langle S_i^I \rangle_0 \nonumber \\
+&= 2K a^2(K) \sum_{\langle I,J\rangle} S^I S^J +   4 a(K) h \sum_I S^I 
+\end{align}
+
+Las ecuaciones de renormalizaci\'on son entonces
+
+\begin{align}
+K' &= 2K\;a^2(K) \\
+h' &= 4h\;a(K) 
+\end{align}
+
+Calculamos $K^*$ en el subespacio invariante $h=0$:
+
+\begin{align}
+a^2(K^*) &= \dfrac{1}{2} \\
+e^{4K} + 2 &= \dfrac{\sqrt{2}}{2} \bigg( 2\cosh(4K) + 6 \bigg)
+\end{align}
+
+Definimos $u \equiv e^{4K}$, entonces
+
+\begin{align}
+u + 2 &= \dfrac{\sqrt{2}}{2} \bigg( u + u^{-1} + 6 \bigg) \\
+\left(1 - \dfrac{\sqrt{2}}{2}\right) u^2 + \left(2 - 3\sqrt{2}\right) u - \dfrac{\sqrt{2}}{2}&= 0
+\end{align}
+
+La \'unica soluci\'on f\'isica (con $u>1$) es $u^* = 1+2\sqrt{2}+\sqrt{5(2+\sqrt{2})}$. Luego, 
+
+\begin{equation}
+K^* = \dfrac{\log{\left[1+2\sqrt{2}+\sqrt{5(2+\sqrt{2})}\right]}}{4} \simeq 0.5186.
+\end{equation}
+
+Por las relaciones de paridad, la matriz jacobiana es diagonal e igual a 
+
+$$
+\mathcal{L}_b = 
+\begin{pmatrix}
+b^{y_T} & 0 \\
+0 & b^{y_B}
+\end{pmatrix},
+$$
+
+donde
+
+\begin{align}
+b^{y_T} &= \left( \dfrac{\partial K'}{\partial K} \right)_{K^{*},h=0} = 2a^2(K^*)+4K^*a(K^*) a'(K^*) \\
+b^{y_B} &= \left( \dfrac{\partial h'}{\partial h} \right)_{K^{*},h=0} = 4a(K^*)
+\end{align}
+
+Despejando y evaluando en $K^*$, y teniendo en cuenta que $b=2$, tenemos
+
+\begin{align}
+y_T &= \dfrac{\log\left[ \left( \dfrac{\partial K'}{\partial K}  \right)_{K^{*},h=0} \right]}{\log(b)} = 1.006 \\
+y_B &= \dfrac{\log\left[ \left( \dfrac{\partial h'}{\partial h}  \right)_{K^{*},h=0} \right]}{\log(b)} = 1.500
+\end{align}
+
+
 
 
 \end{document}
