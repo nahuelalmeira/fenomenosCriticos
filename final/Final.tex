@@ -10,19 +10,19 @@
 H = -J_2 \sum_{\langle i,j\rangle} \sigma_i \sigma_j - J_4 \sum_I \sigma_{I1}\sigma_{I2}\sigma_{I3}\sigma_{I4}
 \end{equation}
 
-Hamiltoniano de prueba:
+Proponemos el hamiltoniano de prueba de spines no interactuantes
 
 \begin{equation}
 H_0 = -\eta \sum_i \sigma_i
 \end{equation}
 
-Desigualdad de Bogoliuvob-Peierls:
+y utilizamos la desigualdad de Bogoliuvob-Peierls:
 
 \begin{equation}
 f \leq f_{\rho} = f_0 + \dfrac{1}{N} \langle H - H_0 \rangle_0.
 \end{equation}
 
-Funci\'on de partici\'on para el hamiltoniano de prueba:
+Calculamos la funci\'on de partici\'on para el hamiltoniano de prueba:
 
 \begin{align}
 \mathcal{Z}_0 &= \sum_{\lbrace s_i\rbrace} e^{-\beta H_0} \nonumber \\
@@ -30,7 +30,7 @@ Funci\'on de partici\'on para el hamiltoniano de prueba:
 &= \sum_{\lbrace s_i\rbrace} \prod_i  e^{\beta \eta s_i} \nonumber \\
 &= \prod_i \sum_{s_i=\pm1} e^{\beta \eta s_i}  \nonumber \\
 &= \left[ e^{-\beta \eta} + e^{\beta \eta} \right]^N \nonumber \\
-&= \left[ 2 \cosh\left(\beta \eta\right) \right]^N, \nonumber \\
+&= \left[ 2 \cosh\left(\beta \eta\right) \right]^N \nonumber \\
 &= \mathcal{Z}_{01}^N,
 \end{align}
 
@@ -40,14 +40,14 @@ donde
 \mathcal{Z}_{01} = 2 \cosh\left(\beta \eta\right).
 \end{equation}
 
-Energ\'ia libre:
+La energ\'ia libre asociada al hamiltoniano de prueba es entonces
 
 \begin{align}
 f_0 &= -\dfrac{1}{\beta N} \ln \mathcal{Z}_0 \nonumber \\
 &= -\dfrac{1}{\beta} \ln \left[ 2 \cosh\left(\beta \eta\right) \right]
 \end{align}
 
-Magnetizaci\'on:
+Calculamos la magnetizaci\'on:
 
 \begin{align} \label{eq:BC_m0}
 m_0 &= \langle s_i \rangle_0 \nonumber \\
@@ -61,13 +61,11 @@ Valores medios de los hamiltonianos respecto del hamiltoniano de prueba:
 
 \begin{align}
 \langle H_0 \rangle_0 &= -\eta \sum_i \langle s_i \rangle_0  \nonumber \\
-&= -\eta N m_0 
-\end{align}
-
-\begin{align}
+&= -\eta N m_0. \\
+\nonumber \\
 \langle H \rangle_0 &= -J_2 \sum_{\langle i,j\rangle} \langle s_i s_j \rangle_0 - J_4 \sum_I \langle\sigma_{I1}\sigma_{I2}\sigma_{I3}\sigma_{I4} \rangle_0 \nonumber \\
 &= -J_2 \sum_{\langle i,j\rangle} \langle s_i\rangle_0^4 - J_4 \sum_I \langle\sigma_{I1}\rangle_0^4  \nonumber \\
-&= -2 J_2 N m_0^2 - J_4 N m_0^4 \nonumber
+&= -2 J_2 N m_0^2 - J_4 N m_0^4 .
 \end{align}
 
 Proponemos la funci\'on variacional 
@@ -76,6 +74,12 @@ Proponemos la funci\'on variacional
 \Phi(\eta) &= f_0 + \dfrac{1}{N} \langle H - H_0 \rangle_0 \nonumber \\
 &= -\dfrac{1}{\beta} \ln \left[2 \cosh\left(\beta \eta\right) \right] -2 J_2 m_0^2 - J_4 m_0^4 + \eta m_0
 \end{align}
+
+La energ\'ia libre en la aproximaci\'on de campo medio est\'a dada por la expresi\'on que minimiza la funci\'on $\Phi(\eta)$ con respecto a $\eta$. Es decir,
+
+\begin{equation}
+f_{\mathrm{mf}}(T,B) = \min_{\eta} \Phi(\eta).
+\end{equation}
 
 Derivamos con respecto a $\eta$ e igualamos a cero para hallar el m\'inimo
 
@@ -92,25 +96,21 @@ La expresi\'on anterior implica que la soluci\'on al problema variacional es
 \eta = 4 J_2 m_0 + 4 J_4 m_0^3.
 \end{equation}
 
-Reemplazando el valor de $\eta$ en \ref{eq:BC_m0},
+Reemplazando el valor de $\eta$ en \ref{eq:BC_m0}, obtenemos la ecuaci\'on de estado a campo nulo
 
 \begin{equation}
 m_0 = \tanh\left[\beta (4 J_2 m_0 + 4 J_4 m_0^3)\right].
 \end{equation}
 
-Definimos las variables $\tilde{\beta} \equiv 4 J_2 \beta$ y $J \equiv J_4/J_2$. De este modo, la ecuaci\'on anterior queda
+Para simplificar notaci\'on en el resto del desarrollo, definimos las variables $\tilde{\beta} \equiv 4 J_2 \beta$ y $J \equiv J_4/J_2$. De este modo, la ecuaci\'on anterior queda
 
 \begin{equation}
 m_0 = \tanh\left[\tilde{\beta} (m_0 + J m_0^3)\right].
 \end{equation}
 
-La energ\'ia libre est\'a dada por la expresi\'on que minimiza la funci\'on $\Phi(\eta)$ con respecto a $\eta$. Es decir,
 
-\begin{equation}
-f_{\mathrm{mf}}(T,B) = \min_{\eta} \Phi(\eta).
-\end{equation}
 
-Utilizando \ref{eq:eta} y \ref{eq:BC_Phi}, tenemos
+Utilizando  \ref{eq:BC_Phi} y \ref{eq:eta}, tenemos
 
 \begin{equation}
 f_{\mathrm{mf}}(T,B=0) = -\dfrac{1}{\beta} \ln \left[2 \cosh\left(\beta ( 4 J_2 m_0 + 4 J_4 m_0^3)\right) \right] +2 J_2 m_0^2 + 3 J_4 m_0^4.
@@ -125,15 +125,15 @@ Reescalamos la energ\'ia en unidades de $J_2$, definiendo $\tilde{f}_{\mathrm{mf
 Haciendo un desarrollo de Taylor a orden 6,
 
 \begin{align}
-\tilde{f}_{\mathrm{mf}}(T,B=0) =& \;C + 2(1-\tilde{\beta}) m_0^2 + 
+\tilde{f}_{\mathrm{mf}}(T,B=0) =& \;a_0 + 2(1-\tilde{\beta}) m_0^2 + 
 \left(3J - 4J\tilde{\beta} + \dfrac{\tilde{\beta}^3}{3} \right) m_0^4 \nonumber \\
 &+ \left(-2 J^2\tilde{\beta} + \dfrac{4J\tilde{\beta}^3}{3} - \dfrac{4\tilde{\beta}^5}{45}\right) m_0^6 + \mathcal{O}(m_0^8)
 \end{align}
 
-donde $C = -4\ln(2)/\tilde{\beta}$ es un t\'ermino aditivo que resulta irrelevante. Vemos entonces que la energ\'ia libre queda expresada en forma de funci\'on de Landau
+donde $a_0 = -4\ln(2)/\tilde{\beta}$ es un t\'ermino aditivo que resulta irrelevante. Vemos entonces que la energ\'ia libre queda expresada en forma de funci\'on de Landau
 
 \begin{align}
-\tilde{f}_{\mathrm{mf}}(T,B=0) = C + \dfrac{a_2}{2} m_0^2 + 
+\tilde{f}_{\mathrm{mf}}(T,B=0) = a_0 + \dfrac{a_2}{2} m_0^2 + 
 \dfrac{a_4}{4} m_0^4 + \dfrac{a_6}{6} m_0^6 + \mathcal{O}(m_0^8),
 \end{align}
 
@@ -152,12 +152,18 @@ Para construir el diagrama de fases, comencemos analizando si existe transici\'o
 J < \dfrac{\tilde{\beta}_c^3}{3(4\tilde{\beta}_c-3)}=\dfrac{1}{3}.
 \end{equation}
 
-De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\beta}$, por lo que la temperatura cr\'itica satisface $k_B T_c/J_2 = 4$.
+De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\beta}$, por lo que la temperatura cr\'itica satisface $k_B T_c/J_2 = 4$. La l\'inea de segundo orden se muestra como l\'inea s\'olida en el gr\'afico de la figura \ref{fig:fases}.
+
+La l\'inea de segundo orden termina en el punto tricr\'itico, el cual se ubica en $(\tilde{\beta}_t, J_t)=(1, 1/3)$. A partir de all\'i, comienza la l\'inea de primer orden, que consiste en los puntos $(\tilde{\beta}, J)$ que satisfacen 
+
+\begin{equation}
+a_4(T, J)=-\dfrac{\sqrt{a_2(T,J)\;a_6(T,J)}}{3}
+\end{equation}
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{phase_diagram.png}
-\caption{Diagrama de fases.}
+\caption{\label{fig:fases} Diagrama de fases.}
 \end{figure}
 
 
