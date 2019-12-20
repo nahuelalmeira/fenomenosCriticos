@@ -157,8 +157,10 @@ De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\bet
 La l\'inea de segundo orden termina en el punto tricr\'itico, el cual se ubica en $(\tilde{\beta}_t, J_t)=(1, 1/3)$. A partir de all\'i, comienza la l\'inea de primer orden, que consiste en los puntos $(\tilde{\beta}, J)$ que satisfacen 
 
 \begin{equation}
-a_4(T, J)=-\dfrac{\sqrt{a_2(T,J)\;a_6(T,J)}}{3}
+a_4(T, J)=-\dfrac{\sqrt{a_2(T,J)\;a_6(T,J)}}{3},
 \end{equation}
+
+junto con las condiciones $a_2>0$ y $a_6>0$. La l\'inea punteada de la figura \ref{fig:fases} representa la l\'inea de primer orden.
 
 \begin{figure}
 \centering
@@ -169,7 +171,13 @@ a_4(T, J)=-\dfrac{\sqrt{a_2(T,J)\;a_6(T,J)}}{3}
 
 \section*{Problema 2: Grupo de renormalizaci\'on}
 
-La regla de la mayor\'ia puede expresarse como
+El hamiltoniando (reducido) de Ising es
+
+\begin{equation}
+\mathcal{H} = K \sum_{\langle i, j\rangle} s_i s_j + h \sum_i s_i.
+\end{equation}
+
+Renormalizamos utilizando bloques de Kadanoff cuadrados de 4 sitios. La regla de la mayor\'ia puede expresarse como
 
 \begin{equation}
 P(s', s) = \prod_I P_I(s',s),
@@ -182,6 +190,14 @@ P_I(s', s) = \dfrac{1}{2} \left[ 1 + S'_I\; \mathrm{sgn}(S_1^I+S_2^I+S_3^I+S_4^I
 \end{equation}
 
 Podemos ver que, en el caso de empate, la expresi\'on anterior asigna la misma probabilidad a cada uno de los dos posibles valores del spin de bloque.
+
+Descomponemos nuestro hamiltoniano en la forma
+
+\begin{equation}
+\mathcal{H}(s) = \mathcal{H}_0(s) + \mathcal{V}_0(s),
+\end{equation}
+
+donde $\mathcal{H}_0(s)$ es una componente sim\'etrica, con interacciones internas de cada bloque y $ \mathcal{V}_0(s)$  es una componente no sim\'etrica, que incluye las interacciones entre bloques
 
 La funci\'on de partici\'on interna puede expresarse como
 
@@ -205,6 +221,8 @@ donde
 a(K) =   \dfrac{e^{4K} + 2}{2 \cosh(4K) + 6}.
 \end{equation}
 
+El promedio del t\'ermino no sim\'etrico es
+
 \begin{align}
 \langle \mathcal{V}(s)\rangle_0 &= K\sum_{\langle I,J\rangle} \langle V_{IJ} \rangle_0 + 4 h \sum_I \langle S_i^I \rangle_0,
 \end{align}
@@ -212,7 +230,7 @@ a(K) =   \dfrac{e^{4K} + 2}{2 \cosh(4K) + 6}.
 donde 
 
 \begin{equation}
-V_{IJ} = \sum_{\langle I,J\rangle; i\epsilon I,j\epsilon J} S_i S_j.
+V_{IJ} = \sum_{\substack{\langle I,J\rangle/\\ i\epsilon I,j\epsilon J}} S_i S_j.
 \end{equation}
 
 En el caso de bloques cuadrados de 4 sitios,
@@ -283,10 +301,18 @@ Despejando y evaluando en $K^*$, y teniendo en cuenta que $b=2$, tenemos
 
 \begin{align}
 y_T &= \dfrac{\log\left[ \left( \dfrac{\partial K'}{\partial K}  \right)_{K^{*},h=0} \right]}{\log(b)} = 1.006 \\
-y_B &= \dfrac{\log\left[ \left( \dfrac{\partial h'}{\partial h}  \right)_{K^{*},h=0} \right]}{\log(b)} = 1.500
+y_B &= \dfrac{\log\left[ \left( \dfrac{\partial h'}{\partial h}  \right)_{K^{*},h=0} \right]}{\log(b)} = 3/2
 \end{align}
 
+Una vez obtenidos los exponentes $y_T$ y $y_B$, todos los dem\'as exponentes se pueden calcular utilizando las relaciones entre exponentes
 
+\begin{align}
+\nu &= \dfrac{1}{y_T} =0.9941\\
+\alpha &= \dfrac{2d y_T - 1}{y_T} = 0.0117 \\
+\beta &= \dfrac{d-y_B}{y_T} = 0.4971 \\
+\gamma &= \dfrac{2 y_B - d}{y_T} = 0.9941 \\
+\delta &= \dfrac{y_B}{d-y_B} = 3 
+\end{align}
 
 
 \end{document}
