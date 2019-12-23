@@ -1,14 +1,28 @@
 \documentclass[10pt]{article}
 \usepackage{amsmath} 
 \usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
 
 \begin{document}
 
 \section*{Problema 1: Campo medio}
 
+El Hamiltoniano del modelo de Ising con interacciones de cuatro spines en una red cuadrada es:
+
 \begin{equation}
-H = -J_2 \sum_{\langle i,j\rangle} \sigma_i \sigma_j - J_4 \sum_I \sigma_{I1}\sigma_{I2}\sigma_{I3}\sigma_{I4}
+H = -J_2 \sum_{\langle i,j\rangle} \sigma_i \sigma_j - J_4 \sum_I \sigma_{I1}\sigma_{I2}\sigma_{I3}\sigma_{I4},
 \end{equation}
+
+donde la suma sobre $I$ es sobre todos los cuadrados elementales de la red y $J_2,J_4>0$.\\
+
+\textbf{(a)} Desarrolle una aproximaci\'on de campo medio para este problema utilizando el m\'etodo variacional. Para ello obtenga una funcional variacional del par\'ametro de orden $m$ (magnetizaci\'on por spin).
+
+\textbf{(b)} Obtenga la ecuaci\'on de estado para campo externo nulo.
+
+\textbf{(c)} Calcule el diagrama de fases en las variables $T/J_2$ y $J_4/J_2$.
+
+\subsection*{Soluci\'on}
+
 
 Proponemos el hamiltoniano de prueba de spines no interactuantes
 
@@ -152,9 +166,9 @@ Para construir el diagrama de fases, comencemos analizando si existe transici\'o
 J < \dfrac{\tilde{\beta}_c^3}{3(4\tilde{\beta}_c-3)}=\dfrac{1}{3}.
 \end{equation}
 
-De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\beta}$, por lo que la temperatura cr\'itica satisface $k_B T_c/J_2 = 4$. La l\'inea de segundo orden se muestra como l\'inea s\'olida en el gr\'afico de la figura \ref{fig:fases}.
+De la definici\'on de $\tilde{\beta}$, se deduce que $k_B T/J_2 = 4 /\tilde{\beta}$, por lo que la temperatura cr\'itica satisface $k_B T_c/J_2 = 4$. La l\'inea de segundo orden se muestra como l\'inea s\'olida en el gr\'afico de la figura \ref{fig:fases}. En particular, vemos que para $J_4=0$, $k_B T_c = 4 J_2$, que es el resultado para la aproximaci\'on variacional del modelo de Ising a primeros vecinos.
 
-La l\'inea de segundo orden termina en el punto tricr\'itico, el cual se ubica en $(\tilde{\beta}_t, J_t)=(1, 1/3)$. A partir de all\'i, comienza la l\'inea de primer orden, que consiste en los puntos $(\tilde{\beta}, J)$ que satisfacen 
+La l\'inea de segundo orden termina en el punto tricr\'itico, el cual se ubica en $(\tilde{\beta}_t, J_t)=(1, 1/3)$. A partir de all\'i, comienza la l\'inea de primer orden que, suficientemente cerca al punto tricr\'itico, consiste en los puntos $(\tilde{\beta}, J)$ que satisfacen 
 
 \begin{equation}
 a_4(T, J)=-\dfrac{\sqrt{a_2(T,J)\;a_6(T,J)}}{3},
@@ -168,14 +182,22 @@ junto con las condiciones $a_2>0$ y $a_6>0$. La l\'inea punteada de la figura \r
 \caption{\label{fig:fases} Diagrama de fases.}
 \end{figure}
 
+\pagebreak
 
 \section*{Problema 2: Grupo de renormalizaci\'on}
+
+Utilizando el m\'etodo de Niemeijer--Van Leeuwen calcule la temperatura cr\'itica y todos los exponentes cr\'iticos del modelo de Ising en la red cuadrada, utilizando el desarrollo hasta primer orden en cumulantes con un bloque de Kadanoff de 4 sitios. En este caso la regla de la mayor\'ia debe generalizarse para incluir el caso de empate, en el cual se asigna igual probabilidad a ambas orientaciones del spin de bloque. Compare los resultados obtenidos con los exactos.
+
+\subsection*{Soluci\'on}
 
 El hamiltoniando (reducido) de Ising es
 
 \begin{equation}
-\mathcal{H} = K \sum_{\langle i, j\rangle} s_i s_j + h \sum_i s_i.
+\mathcal{H} = K \sum_{\langle i, j\rangle} s_i s_j + h \sum_i s_i,
 \end{equation}
+
+
+donde $\mathcal{H} \equiv -\beta H$ $K \equiv \beta J$ y $h \equiv \beta B$.
 
 Renormalizamos utilizando bloques de Kadanoff cuadrados de 4 sitios. La regla de la mayor\'ia puede expresarse como
 
@@ -197,20 +219,26 @@ Descomponemos nuestro hamiltoniano en la forma
 \mathcal{H}(s) = \mathcal{H}_0(s) + \mathcal{V}_0(s),
 \end{equation}
 
-donde $\mathcal{H}_0(s)$ es una componente sim\'etrica, con interacciones internas de cada bloque y $ \mathcal{V}_0(s)$  es una componente no sim\'etrica, que incluye las interacciones entre bloques
-
+donde $\mathcal{H}_0(s)$ incluye s\'olo interacciones sim\'etricas internas de cada bloque y $ \mathcal{V}_0(s)$  incluye el resto de las interacciones.
 La funci\'on de partici\'on interna puede expresarse como
 
+\begin{equation}
+\mathcal{Z}_0 = \sum_{\lbrace s \rbrace} P(s',s) e^{\mathcal{H}_0(s)} = \sum_I \mathcal{Z}^I_0,
+\end{equation}
+
+donde 
+
 \begin{align}
+\mathcal{Z}_0^I &= \sum_{s_i\epsilon I} \sum_{s_i=\pm 1} P_I(s',s) e^{\mathcal{H}_0(s)} \nonumber \\
 \mathcal{Z}_0^I &= 1\times e^{4K} + 1\times 4 + \dfrac{1}{2}\times 4 + \dfrac{1}{2}\times 2e^{-4K} \nonumber \\
 &= e^{4K} + 6 + e^{-4K} \nonumber \\
-&= 2 \cosh(4K) + 6
+&= 2 \cosh(4K) + 6.
 \end{align}
 
 Como todos los spines del bloque son equivalentes, el promedio de spin de sitio es 
 
 \begin{align}
-\langle S_i^I \rangle_0 &= \dfrac{1}{\mathcal{Z}_0} \sum_{\lbrace s \rbrace} P(S, s) e^{\mathcal{H}_0}(s) S_i^I \nonumber \\
+\langle S_i^I \rangle_0 &= \dfrac{1}{\mathcal{Z}_0} \sum_{\lbrace s \rbrace} P(s', s) e^{\mathcal{H}_0}(s) S_i^I \nonumber \\
  &= \dfrac{e^{4K} + 2}{\mathcal{Z}_0^I} S'_I\nonumber \\
 &= a(K) S'_I,
 \end{align}
@@ -239,13 +267,13 @@ En el caso de bloques cuadrados de 4 sitios,
 V_{IJ} = S_1^I S_4^J+  S_2^I S_3^J.
 \end{equation}
 
-Luego,
+Dado que la distribuci\'on de probabilidad $P(s',s) e^{\mathcal{H}_0}$ factoriza por bloques, podemos expresar
 
 \begin{equation}
 \langle V_{IJ}\rangle_0 = 2\langle S_i^I \rangle_0 \langle S_i^J \rangle_0.
 \end{equation}
 
-Entonces,
+Luego,
 
 
 \begin{align}
@@ -280,7 +308,7 @@ La \'unica soluci\'on f\'isica (con $u>1$) es $u^* = 1+2\sqrt{2}+\sqrt{5(2+\sqrt
 K^* = \dfrac{\log{\left[1+2\sqrt{2}+\sqrt{5(2+\sqrt{2})}\right]}}{4} \simeq 0.5186.
 \end{equation}
 
-Por las relaciones de paridad, la matriz jacobiana es diagonal e igual a 
+Por las relaciones de paridad, que se pueden chequear directamente de las ecuaciones de renormalizaci\'on, la matriz jacobiana es diagonal e igual a 
 
 $$
 \mathcal{L}_b = 
@@ -334,7 +362,7 @@ En la tabla \ref{tabla} se muestra la comparaci\'on con los valores obtenidos me
  $\delta$ & $3$      & $15$\\
  \hline
 \end{tabular}
-\caption{\label{tabla} Comparaci\'on entre exponentes}
+\caption{\label{tabla} Comparaci\'on de exponentes y temperatura cr\'itica entre el m\'etodo propuesto de grupo de renormalizaci\'on y los valores exactos.}
 \end{table}
 
 \end{document}
