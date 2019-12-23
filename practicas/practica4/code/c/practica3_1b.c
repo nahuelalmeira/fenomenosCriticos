@@ -29,6 +29,8 @@ int **AllocMatrixInt(int);			//alloca matriz entero
 void FreeMatrixInt(int **, int);	//libera matriz entero
 void pasoMC(int L, int **s, double *expVec, int *E, int *m);
 
+long p = 133;
+
 int main(int argc, char *argv[])
 {
 
@@ -188,7 +190,6 @@ double exponencial(double expVec[2], int dE)	//calcula exp(-dE/T)
 void pasoMC(int L, int **s, double *expVec, int *E, int *m)
 {
 	int i, j;
-	long p = 133;
 	float eta;
 	int dE;
 	int h[L][L];
