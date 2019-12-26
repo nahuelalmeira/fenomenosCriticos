@@ -54,9 +54,9 @@ int main(int argc, char *argv[])
 	int plus[L], minus[L];
 	double *expVec;				//almacena valores de exponenciales
 	int E, M;
-	double m;
+	double m, e;
 	double T;
-	double EMedia, mMedia, E2Media, m2Media, m4Media, cp, chi;
+	double eMedia, mMedia, e2Media, m2Media, m4Media, cp, chi;
 	FILE *gpipe;
 	gpipe = popen("gnuplot --persist", "w");
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 			
 	fprintf(gpipe, "plot '-' w l lw 2\n");
 	
-	printf("T           e        m          m2          m4\n");
+	printf("T           e        m          cp       chi        m2          m4\n");
 
 	//Barrido en temperatura
 	for(T = Ti ; T <= Tf ; T += deltaT)
@@ -104,11 +104,13 @@ int main(int argc, char *argv[])
 		for(k = 0 ; k <= N ; k++) 
 			pasoMC(L, s, expVec, &E, &M);
 	
-		EMedia  = 0;
-		E2Media = 0;
-		mMedia  = 0;
-		m2Media = 0;
-		m4Media = 0;
+		//EMedia  = 0;
+		//E2Media = 0;
+		eMedia  = 0.;
+		e2Media = 0.;
+		mMedia  = 0.;
+		m2Media = 0.;
+		m4Media = 0.;
 		samples = 0;
 		
 		for(k=0; k<Ns; k++)
@@ -116,8 +118,11 @@ int main(int argc, char *argv[])
 			pasoMC(L, s, expVec, &E, &M);
 			if (k%(Ns/n_samples) == 0) {
 				m = (1.*abs(M))/(L*L);
-				EMedia += E;
-				E2Media += E*E;
+				e = (1.*E)/(L*L);
+				//EMedia += E;
+				//E2Media += E*E;
+				eMedia += e;
+				e2Media += e*e;
 				mMedia += m;
 				m2Media += m*m;
 				m4Media += pow(m, 4);
@@ -128,22 +133,28 @@ int main(int argc, char *argv[])
 		assert(samples==n_samples);
 		
 		//Divide por número de pasos MC
-		EMedia  /= n_samples;
-		E2Media /= n_samples;
+		//EMedia  /= n_samples;
+		//E2Media /= n_samples;
+		eMedia  /= n_samples;
+		e2Media /= n_samples;
 		mMedia  /= n_samples;
 		m2Media /= n_samples;
 		m4Media /= n_samples;
 		
 		//Calcula calor específico y susceptibilidad magnética
-		cp = (E2Media - EMedia*EMedia)/(L*L*T*T);
+		//cp = (E2Media - EMedia*EMedia)/(L*L*T*T);
+		cp  = L*L*(e2Media - eMedia*eMedia)/(T*T);
 		chi = L*L*(m2Media - mMedia*mMedia)/T;	
 
 		fprintf(gpipe, "%g %g\n", T, mMedia);
 		//fprintf(stream, "%lf\t%lf\t%lf\t%lf\t%lf\t%lf\t%lf\n",T,EMedia, EMedia/(L*L), mMedia, mMedia/(L*L), cp, chi);	
+		//fprintf(stream, "%lf\t%lf\t%lf\t%lf\t%lf\t%lf\t%lf\n",
+	    //  	T, EMedia/(L*L), mMedia, cp, chi, m2Media, m4Media);
 		fprintf(stream, "%lf\t%lf\t%lf\t%lf\t%lf\t%lf\t%lf\n",
-				T, EMedia/(L*L), mMedia, cp, chi, m2Media, m4Media);	
+	          	T, eMedia, mMedia, cp, chi, m2Media, m4Media);	
 
-		printf("%.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, EMedia/(L*L), mMedia, m2Media, m4Media);
+		//printf("%.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, EMedia/(L*L), mMedia, m2Media, m4Media);
+		printf("%.3lf    %.3lf     %.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, eMedia, mMedia, cp, chi, m2Media, m4Media);
 		
 	}
 	fprintf(gpipe, "e\n");	
