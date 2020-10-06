@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 	          	T, eMedia, mMedia, cp, chi, m2Media, m4Media);	
 
 		//printf("%.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, EMedia/(L*L), mMedia, m2Media, m4Media);
-		printf("%.3lf    %.3lf     %.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, eMedia, mMedia, cp, chi, m2Media, m4Media);
+		printf("%.4lf   %.3lf     %.3lf    %.3lf     %.3lf    %.8lf     %.8lf\n", T, eMedia, mMedia, cp, chi, m2Media, m4Media);
 		
 	}
 	fprintf(gpipe, "e\n");	
