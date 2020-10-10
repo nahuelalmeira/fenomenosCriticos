@@ -13,6 +13,8 @@
 
 \begin{document}
 
+\author{Nahuel Almeira}
+
 \title{Simulaciones del modelo de Ising en 2D}
 
 \maketitle
@@ -46,7 +48,6 @@ Usando condiciones de contorno periódicas y tomando la energía en unidades de 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.27]{Fig2.pdf}
-\includegraphics[scale=0.27]{Fig3.pdf}
 \caption{(a) Decaimiento de la magnetización como función de la temperatura. Las curvas se superponen a partir de una determinada temperatura cuando son reescaladas por el factor $\sqrt{N}$. (b) Derivada de la magnetización con respecto a la temperatura, graficada en función de la temperatura. El punto de inflexión de las curvas de la figura (a) corresponde a los máximos de estas curvas. (c) Comportamiento de los puntos de inflexión en función de $1/L$. La recta corresponde a un ajuste lineal por mínimos cuadrados de los puntos. La ordenada al origen representa la estimación de la temperatura crítica en el límite termodinámico. El valor obtenido es $\hat{T}_c = 2.275$, ligeramente superior que el valor teórico $T_c = 2.269$.}
 \end{figure}
 
@@ -85,8 +86,7 @@ donde $t = (T-T_c)/T_c$ es la temperatura reducida. Por lo tanto, las curvas de 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.27]{Fig4.pdf}
-\includegraphics[scale=0.27]{Fig5.pdf}
+\includegraphics[scale=0.27]{Fig3.pdf}
 \caption{(a) Cumulante de Binder en función de la temperatura para diferentes tamaños del sistema. El punto de intersección entre las curvas representa una estimación de la temperatura crítica. (b) Acercamiento a la intersección, cuyo valor es $\hat{T}_c = 2.269\pm 0.003$. El resultado obtenido coincide, dentro del error, con el valor teórico, por lo que el método resulta confiable. (c) Colapso de las curvas al reescalar la temperatura con el tamaño del sistema.}
 \end{figure}
 
@@ -96,8 +96,7 @@ donde $t = (T-T_c)/T_c$ es la temperatura reducida. Por lo tanto, las curvas de 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.27]{Fig6.pdf}
-\includegraphics[scale=0.27]{Fig7.pdf}
+\includegraphics[scale=0.27]{Fig4.pdf}
 \caption{(a) Susceptibilidad en función de la temperatura, para distintos tamaños del sistema (escala lin-log). Se puede apreciar que esta cantidad presenta un pico en un valor de $T$ que depende del tamaño, y que se sitúa por la derecha de $T_c$. A medida que el tamaño aumenta, el pico se posiciona cada vez más cerca de la temperatura crítica. (b) Valor máximo de la susceptibilidad en función del tamaño del sistema. La recta representa un ajuste por mínimos cuadrados. La pendiente de la recta permite estimar el cociente $\gamma/\nu$ como $\hat{\gamma/\nu} = 1.774\pm 0.007$. El valor obtenido es ligeramente superior que el valor teórico $\gamma /\nu = 1.75$. (c) Estimación simultánea de $T_c$ y $1/\nu$ mediante la ecuación  $T^*(L) = T_c + A L^{1/\nu}$. El procedimiento utilizado consiste en realizar un ajuste por mínimos cuadrados de $\log [T^*(L) - T]$ vs. $\log L$, barriendo valores de $T$. Definimos $\hat{T}_c$ como la temperatura que minimice el error del ajuste, en este caso $\hat{T}_c = 2.258$. Además, con la pendiente de la recta obtenemos $1/\hat{\nu} = 0.78$. Podemos ver que este método presenta un error importante en ambas estimaciones, que puede ser atribuido al hecho de ajustar los dos parámetros simultáneamente. (d) Estimación del exponente $1/\nu$ empleando la misma ecuación que en (c), pero esta vez utilizando el valor teórico de la temperatura. El valor estimado es $1/\hat{\nu} = 1.08\pm 0.08$, el cual coincide dentro del error con el valor teórico $1/\nu = 1$.}
 \end{figure}
 
@@ -123,6 +122,13 @@ donde $t = (T-T_c)/T_c$ es la temperatura reducida. Por lo tanto, las curvas de 
 
 \item Calcule la curva de magnetización en función del campo $B/J$ para distintas temperaturas por encima y por debajo de $T_c$, así como para el valor de $T_c$ estimado anteriorment. Estime a partir de estos resultados el exponente $\delta$. Grafique simultaneamente $m/|t|^{\beta}$ vs. $B/|t|^{\Delta}$, con $\Delta = \beta \delta$ y $t$ es la temperatura reducida, usando los exponentes críticos exactos y los estimados. 
 
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.27]{Fig5.pdf}
+\caption{(a) Magnetización en función del campo magnético (escala log-log) para una temperatura cercana a la temperatura crítica y tamaño de sistema $L = 64$. Se puede ver que los puntos se ubican aproximadamente sobre una recta, indicando la relación $B\sim m^{1/\delta}$. La recta punteada representa el ajuste hecho por mínimos cuadrados, con el cual estimamos el exponente $\delta$ como $\hat{\delta} = 15.2\pm 0.2$. (b) Colapso de las curvas $m/|t|^{\beta}$ vs. $B/|t|^{\Delta}$ utilizando los exponentes estimados. (c) Mismo gráfico que en (b), pero utilizando los exponentes teóricos. En ambos casos, los colapsos son buenos y no se aprecian diferencias significativas. }
+\end{figure}
+
+
 \pagebreak
 
 \item Analice cómo crece el máximo del calor específico con $L$. Asumiendo que el mismo crece con una ley de potencia $\max [C] \sim L^{\alpha/\nu}$, estime el exponente $\alpha / \nu$.
@@ -130,7 +136,7 @@ donde $t = (T-T_c)/T_c$ es la temperatura reducida. Por lo tanto, las curvas de 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.27]{Fig11.pdf}
+\includegraphics[scale=0.27]{Fig6.pdf}
 \caption{(a) Calor específico en función de la temperatura, para diferentes tamaños del sistema. Observamos que esta cantidad presenta un pico cerca de la temperatura crítica. (b) Ajuste de los picos según la ecuación $C \sim L^{\alpha / \nu}$. Podemos ver que el ajuste no es bueno, ya que los puntos se curvan en escala log-log. Además, el cociente entre exponentes hayado no concuerda con el valor teórico. (c) Ajuste de los picos suponiendo un escaleo logarítmico de la forma $C \sim \dfrac{1}{\nu}$ (es decir, tomando $\alpha = 0$). En este caso, el ajuste es mejor, y el estimador para el exponente $1/\nu$ hayado se aproxima más al valor teórico.}
 \end{figure}
 
